@@ -4,6 +4,8 @@ export type Role = {
   period: string;
   location: string;
   current?: boolean;
+  // How much complexity / responsibility this stage carried
+  scope: string;
   summary: string;
   achievements: string[];
   tags: string[];
@@ -16,6 +18,7 @@ export const experience: Role[] = [
     period: "2023 — Present",
     location: "Surat, India",
     current: true,
+    scope: "Owns the platform's hardest surfaces — custom video player & shared architecture",
     summary:
       "Lead frontend on the Cappital team's white-label OTT/media platform line — owning the video experience, custom players, and the shared architecture reused across multiple streaming brands.",
     achievements: [
@@ -31,6 +34,7 @@ export const experience: Role[] = [
     title: "ReactJS Developer",
     period: "Aug 2021 — 2023",
     location: "Surat, India",
+    scope: "Shipped 8+ production apps across varied stacks, owning whole product frontends",
     summary:
       "Delivered 8+ production web apps across varied stacks (Next.js, MobX, Ant Design), with a focus on performance and data-layer efficiency.",
     achievements: [
@@ -46,6 +50,7 @@ export const experience: Role[] = [
     title: "AI / ML Intern",
     period: "Jan 2021 — Jun 2021",
     location: "Surat, India",
+    scope: "Built ML-assisted utilities — the on-ramp into frontend engineering",
     summary:
       "Built ML-assisted utility apps before transitioning into frontend engineering.",
     achievements: [

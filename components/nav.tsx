@@ -9,10 +9,10 @@ import { buttonStyles } from "./ui/primitives";
 import { cn } from "@/lib/utils";
 
 const links = [
-  { href: "#about", label: "About" },
+  { href: "#approach", label: "Approach" },
+  { href: "#impact", label: "Impact" },
   { href: "#work", label: "Work" },
   { href: "#experience", label: "Experience" },
-  { href: "#skills", label: "Skills" },
   { href: "#contact", label: "Contact" },
 ];
 
@@ -80,7 +80,7 @@ export function Nav() {
           href="#top"
           className="flex items-center gap-2 pl-1 font-display text-sm font-bold tracking-tight"
         >
-          <span className="grid h-7 w-7 place-items-center rounded-full bg-accent text-[13px] font-bold text-white">
+          <span className="grid h-7 w-7 place-items-center rounded-full bg-accent text-[13px] font-bold text-on-accent">
             N
           </span>
           <span className="hidden sm:inline">Nandini Vaswani</span>

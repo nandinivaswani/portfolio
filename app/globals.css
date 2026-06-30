@@ -19,6 +19,7 @@
   --color-accent: var(--accent);
   --color-accent-2: var(--accent-2);
   --color-accent-soft: var(--accent-soft);
+  --color-on-accent: var(--on-accent);
   --color-ring: var(--accent);
 
   --radius-card: 1.25rem;
@@ -29,36 +30,38 @@
   --animate-shimmer: shimmer 2.5s linear infinite;
 }
 
-/* ---------- Light theme (default) ---------- */
+/* ---------- Light theme (warm paper) ---------- */
 :root {
-  --bg: #fafaf9;
-  --bg-soft: #f4f4f2;
+  --bg: #faf8f4;
+  --bg-soft: #f3efe8;
   --surface: #ffffff;
-  --surface-2: #f7f7f6;
-  --border: #e6e6e3;
-  --border-soft: #eeeeec;
-  --fg: #16161a;
-  --fg-muted: #52525b;
-  --fg-subtle: #8a8a93;
-  --accent: #6d28d9;
-  --accent-2: #2563eb;
+  --surface-2: #f6f2eb;
+  --border: #e7e0d5;
+  --border-soft: #efe9df;
+  --fg: #1a1712;
+  --fg-muted: #5c554b;
+  --fg-subtle: #8f877b;
+  --accent: #b45309;
+  --accent-2: #d97706;
   --accent-soft: color-mix(in oklab, var(--accent) 12%, transparent);
+  --on-accent: #fffaf0;
 }
 
-/* ---------- Dark theme ---------- */
+/* ---------- Dark theme (cinematic / streaming) ---------- */
 .dark {
-  --bg: #08080a;
-  --bg-soft: #0c0c0f;
-  --surface: #111114;
-  --surface-2: #161619;
-  --border: #232328;
-  --border-soft: #1a1a1e;
-  --fg: #f4f4f5;
-  --fg-muted: #a1a1aa;
-  --fg-subtle: #6b6b74;
-  --accent: #a78bfa;
-  --accent-2: #60a5fa;
-  --accent-soft: color-mix(in oklab, var(--accent) 16%, transparent);
+  --bg: #070608;
+  --bg-soft: #0b090d;
+  --surface: #110d12;
+  --surface-2: #17121b;
+  --border: #251f29;
+  --border-soft: #1a161e;
+  --fg: #f6f4f1;
+  --fg-muted: #a8a29a;
+  --fg-subtle: #6f6862;
+  --accent: #f6b73c;
+  --accent-2: #f59e0b;
+  --accent-soft: color-mix(in oklab, var(--accent) 15%, transparent);
+  --on-accent: #1b1304;
 }
 
 @layer base {
@@ -73,6 +76,18 @@
     color: var(--color-fg);
     font-feature-settings: "ss01", "cv01";
     -webkit-font-smoothing: antialiased;
+    position: relative;
+  }
+  /* Cinematic warm vignette + faint top projector glow (dark only) */
+  .dark body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      radial-gradient(120% 80% at 50% -10%, color-mix(in oklab, var(--accent) 9%, transparent), transparent 55%),
+      radial-gradient(140% 120% at 50% 120%, rgba(0, 0, 0, 0.55), transparent 60%);
   }
   ::selection {
     background: color-mix(in oklab, var(--accent) 30%, transparent);
@@ -119,7 +134,7 @@
     position: absolute;
     inset: 0;
     pointer-events: none;
-    opacity: 0.025;
+    opacity: 0.04;
     z-index: 0;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }

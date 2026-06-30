@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { Briefcase, GraduationCap, Check } from "lucide-react";
+import { Briefcase, GraduationCap, Check, TrendingUp } from "lucide-react";
 import { Container, SectionHeading } from "@/components/ui/primitives";
 import { Reveal } from "@/components/ui/reveal";
 import { experience, education } from "@/content/experience";
@@ -14,11 +14,11 @@ export function Experience() {
           eyebrow="Experience"
           title={
             <>
-              From ReactJS developer to{" "}
-              <span className="text-gradient">frontend lead.</span>
+              Measured in complexity solved,{" "}
+              <span className="text-gradient">not years served.</span>
             </>
           }
-          description="A focused trajectory — one company, growing scope: from shipping features to owning the streaming platform's hardest surfaces."
+          description="A focused trajectory — one company, steadily harder problems: from shipping features, to owning whole product frontends, to architecting the streaming platform's hardest surfaces."
         />
 
         <div className="relative mt-16">
@@ -40,7 +40,7 @@ export function Experience() {
                       transition={{ type: "spring", stiffness: 300, damping: 20 }}
                       className={`grid h-10 w-10 place-items-center rounded-full border-2 sm:h-12 sm:w-12 ${
                         role.current
-                          ? "border-accent bg-accent text-white"
+                          ? "border-accent bg-accent text-on-accent"
                           : "border-border bg-surface text-fg-muted"
                       }`}
                     >
@@ -60,6 +60,10 @@ export function Experience() {
                           <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" /> Current
                         </span>
                       )}
+                    </p>
+                    <p className="mt-3 inline-flex items-start gap-2 rounded-lg border border-accent/25 bg-accent-soft px-3 py-2 text-[13px] font-medium text-fg">
+                      <TrendingUp size={14} className="mt-0.5 shrink-0 text-accent" />
+                      {role.scope}
                     </p>
                     <p className="mt-3 text-sm leading-relaxed text-fg-muted text-pretty">
                       {role.summary}

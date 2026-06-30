@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { ArrowUpRight, Check, ChevronDown, Cpu } from "lucide-react";
+import { ArrowUpRight, ChevronDown, Cpu, Sparkles } from "lucide-react";
 import { Container, SectionHeading } from "@/components/ui/primitives";
 import { Reveal } from "@/components/ui/reveal";
 import { ProjectVisual } from "@/components/project-visual";
@@ -17,11 +17,11 @@ export function Projects() {
           eyebrow="Featured work"
           title={
             <>
-              Real production work across{" "}
-              <span className="text-gradient">very different problems.</span>
+              Complex problems, told as{" "}
+              <span className="text-gradient">problem → solution.</span>
             </>
           }
-          description="Streaming, content systems, global SaaS, AI tooling and high-traffic campaigns. For each, I've highlighted the engineering that's genuinely hard — and the impact it created."
+          description="Streaming, global SaaS, AI tooling and high-traffic campaigns. For each, here's the constraint that made it hard — and the engineering that resolved it."
         />
 
         <div className="mt-16 space-y-20 sm:space-y-28">
@@ -44,6 +44,7 @@ function ProjectRow({
   reversed: boolean;
 }) {
   const [open, setOpen] = useState(false);
+  const accent = project.accent.from;
 
   return (
     <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
@@ -60,10 +61,7 @@ function ProjectRow({
       <div className={cn("order-2", reversed ? "lg:order-1" : "lg:order-2")}>
         <Reveal y={24}>
           <div className="flex items-center gap-3">
-            <span
-              className="font-mono text-sm font-semibold"
-              style={{ color: project.accent.from }}
-            >
+            <span className="font-mono text-sm font-semibold" style={{ color: accent }}>
               {String(index + 1).padStart(2, "0")}
             </span>
             <span className="mono-label !text-fg-subtle">{project.category}</span>
@@ -75,39 +73,47 @@ function ProjectRow({
           </h3>
           <p className="mt-1 text-sm font-medium text-accent">{project.tagline}</p>
 
-          <p className="mt-4 leading-relaxed text-fg-muted text-pretty">
-            {project.summary}
-          </p>
+          {/* Problem → Constraints → Solution → Impact */}
+          <div className="mt-6 space-y-5 border-l border-border pl-5">
+            <Step label="Problem" accent={accent}>
+              <p className="text-sm leading-relaxed text-fg-muted text-pretty">
+                {project.problem}
+              </p>
+            </Step>
 
-          {/* Impact metrics */}
-          <div className="mt-6 flex flex-wrap gap-2.5">
-            {project.metrics.map((m) => (
-              <div
-                key={m.label}
-                className="rounded-xl border border-border bg-surface px-3.5 py-2"
-              >
-                <div className="font-display text-sm font-bold text-fg">{m.value}</div>
-                <div className="text-[11px] text-fg-subtle">{m.label}</div>
-              </div>
-            ))}
+            <Step label="Constraints" accent={accent}>
+              <ul className="flex flex-wrap gap-1.5">
+                {project.constraints.map((c) => (
+                  <li
+                    key={c}
+                    className="rounded-md border border-border bg-surface-2 px-2 py-1 text-[11px] font-medium text-fg-muted"
+                  >
+                    {c}
+                  </li>
+                ))}
+              </ul>
+            </Step>
+
+            <Step label="Solution" accent={accent}>
+              <p className="text-sm leading-relaxed text-fg text-pretty">
+                {project.solution}
+              </p>
+            </Step>
+
+            <Step label="Impact" accent={accent}>
+              <ul className="space-y-2">
+                {project.impact.map((it) => (
+                  <li key={it} className="flex gap-2.5 text-sm text-fg-muted">
+                    <Sparkles size={14} className="mt-0.5 shrink-0" style={{ color: accent }} />
+                    <span className="text-pretty">{it}</span>
+                  </li>
+                ))}
+              </ul>
+            </Step>
           </div>
 
-          {/* Highlights */}
-          <ul className="mt-6 space-y-2.5">
-            {project.highlights.slice(0, 3).map((h) => (
-              <li key={h} className="flex gap-2.5 text-sm text-fg-muted">
-                <Check
-                  size={16}
-                  className="mt-0.5 shrink-0"
-                  style={{ color: project.accent.from }}
-                />
-                <span className="text-pretty">{h}</span>
-              </li>
-            ))}
-          </ul>
-
           {/* Expandable engineering depth */}
-          <div className="mt-5">
+          <div className="mt-6">
             <button
               type="button"
               onClick={() => setOpen((v) => !v)}
@@ -136,7 +142,7 @@ function ProjectRow({
                       <li key={e} className="flex gap-2.5 text-sm text-fg-muted">
                         <span
                           className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full"
-                          style={{ background: project.accent.from }}
+                          style={{ background: accent }}
                         />
                         <span className="font-mono text-[13px] leading-relaxed">{e}</span>
                       </li>
@@ -164,6 +170,28 @@ function ProjectRow({
           </p>
         </Reveal>
       </div>
+    </div>
+  );
+}
+
+function Step({
+  label,
+  accent,
+  children,
+}: {
+  label: string;
+  accent: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="relative">
+      <span
+        className="absolute -left-[1.4rem] top-1 h-2 w-2 rounded-full ring-4 ring-bg"
+        style={{ background: accent }}
+        aria-hidden
+      />
+      <p className="mono-label !text-[0.58rem] !text-fg-subtle">{label}</p>
+      <div className="mt-1.5">{children}</div>
     </div>
   );
 }

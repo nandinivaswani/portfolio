@@ -11,6 +11,18 @@ import {
   Star,
   Trophy,
   Medal,
+  Building2,
+  PenTool,
+  Server,
+  Users,
+  MousePointerClick,
+  Scaling,
+  Accessibility,
+  Boxes,
+  RefreshCw,
+  GitBranch,
+  Component,
+  Webhook,
   type LucideIcon,
 } from "lucide-react";
 
@@ -27,6 +39,18 @@ const map: Record<string, LucideIcon> = {
   Star,
   Trophy,
   Medal,
+  Building2,
+  PenTool,
+  Server,
+  Users,
+  MousePointerClick,
+  Scaling,
+  Accessibility,
+  Boxes,
+  RefreshCw,
+  GitBranch,
+  Component,
+  Webhook,
 };
 
 export function Icon({

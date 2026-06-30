@@ -12,11 +12,13 @@ export function SpotlightCard({
   title,
   description,
   index,
+  footnote,
 }: {
   icon: string;
   title: string;
   description: string;
   index: number;
+  footnote?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -84,6 +86,12 @@ export function SpotlightCard({
         </div>
         <h3 className="font-display text-base font-semibold">{title}</h3>
         <p className="mt-1.5 text-sm leading-relaxed text-fg-muted">{description}</p>
+        {footnote && (
+          <p className="mt-3 flex items-start gap-1.5 border-t border-border-soft pt-3 font-mono text-[11px] leading-snug text-fg-subtle">
+            <span className="text-accent">↳</span>
+            {footnote}
+          </p>
+        )}
       </div>
     </div>
   );

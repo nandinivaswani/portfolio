@@ -2,14 +2,13 @@ import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
 import { ScrollProgress } from "@/components/scroll-progress";
 import { Hero } from "@/components/sections/hero";
-import { Brands } from "@/components/sections/brands";
-import { About } from "@/components/sections/about";
+import { TranslationLayer } from "@/components/sections/translation-layer";
+import { HowIThink } from "@/components/sections/how-i-think";
+import { EngineeringImpact } from "@/components/sections/engineering-impact";
 import { Projects } from "@/components/sections/projects";
 import { MoreProjects } from "@/components/sections/more-projects";
-import { Metrics } from "@/components/sections/metrics";
+import { FrontendReality } from "@/components/sections/frontend-reality";
 import { Experience } from "@/components/sections/experience";
-import { Skills } from "@/components/sections/skills";
-import { Highlights } from "@/components/sections/highlights";
 import { Contact } from "@/components/sections/contact";
 import { site } from "@/content/site";
 import { projects } from "@/content/projects";
@@ -21,14 +20,13 @@ export default function Home() {
       <Nav />
       <main id="main">
         <Hero />
-        <Brands />
-        <About />
+        <TranslationLayer />
+        <HowIThink />
+        <EngineeringImpact />
         <Projects />
         <MoreProjects />
-        <Metrics />
+        <FrontendReality />
         <Experience />
-        <Skills />
-        <Highlights />
         <Contact />
       </main>
       <Footer />
