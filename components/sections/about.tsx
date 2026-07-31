@@ -20,27 +20,25 @@ export function About() {
                 </>
               }
             />
-            <div className="mt-7 space-y-4 text-base leading-relaxed text-fg-muted text-pretty">
+            <div className="text-fg-muted mt-7 space-y-4 text-base leading-relaxed text-pretty">
               <p>
-                I&apos;m {site.firstName}, a Senior Frontend Engineer based in{" "}
-                {site.location}. For the last {site.yearsExperience} years I&apos;ve
-                lived inside <strong className="text-fg">complex React &amp; Next.js
-                applications</strong> — across streaming, global SaaS, AI products,
-                content systems and high-traffic marketing.
+                I&apos;m {site.firstName}, a Senior Frontend Engineer based in {site.location}. For
+                the last {site.yearsExperience} years I&apos;ve lived inside{" "}
+                <strong className="text-fg">complex React &amp; Next.js applications</strong> —
+                across streaming, global SaaS, AI products, content systems and high-traffic
+                marketing.
               </p>
               <p>
-                I&apos;m happy to own the parts most engineers avoid. That&apos;s
-                meant building a{" "}
-                <strong className="text-fg">custom HLS video player</strong> from
-                primitives, but also a ~30-language SaaS, a type-safe GraphQL data
-                layer for an AI tool, an editorial CMS, and reusable component
-                systems that whole teams build on.
+                I&apos;m happy to own the parts most engineers avoid. That&apos;s meant building a{" "}
+                <strong className="text-fg">custom HLS video player</strong> from primitives, but
+                also a ~30-language SaaS, a type-safe GraphQL data layer for an AI tool, an
+                editorial CMS, and reusable component systems that whole teams build on.
               </p>
               <p>
-                What ties it together is how I work: I care about the things that
-                don&apos;t show up in a demo but decide whether a product is good —
-                performance under real traffic, accessibility, internationalization,
-                and clean architecture other engineers can extend.
+                What ties it together is how I work: I care about the things that don&apos;t show up
+                in a demo but decide whether a product is good — performance under real traffic,
+                accessibility, internationalization, and clean architecture other engineers can
+                extend.
               </p>
             </div>
           </div>

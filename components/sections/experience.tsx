@@ -1,118 +1,140 @@
 "use client";
 
-import { motion } from "motion/react";
-import { Briefcase, GraduationCap, Check } from "lucide-react";
-import { Container, SectionHeading } from "@/components/ui/primitives";
-import { Reveal } from "@/components/ui/reveal";
+import { motion, useScroll, useTransform, useReducedMotion } from "motion/react";
+import { useRef } from "react";
 import { experience, education } from "@/content/experience";
+import { DotField, SectionGlow } from "@/components/section-fx";
+import { RevealHeading } from "@/components/motion-fx";
+
+const ease = [0.16, 1, 0.3, 1] as const;
 
 export function Experience() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const reduce = useReducedMotion();
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"],
+  });
+  const lineH = useTransform(scrollYProgress, [0.1, 0.9], ["0%", "100%"]);
+
   return (
-    <section id="experience" className="relative scroll-mt-24 bg-bg-soft py-24">
-      <Container>
-        <SectionHeading
-          eyebrow="Experience"
-          title={
-            <>
-              From ReactJS developer to{" "}
-              <span className="text-gradient">frontend lead.</span>
-            </>
-          }
-          description="A focused trajectory — one company, growing scope: from shipping features to owning the streaming platform's hardest surfaces."
-        />
+    <section
+      id="experience"
+      className="border-border relative isolate scroll-mt-16 overflow-hidden border-t"
+    >
+      <SectionGlow className="top-[6%] left-[-8%] h-[420px] w-[420px]" />
+      <DotField className="right-[-8%] bottom-[6%] h-[440px] w-[440px]" />
 
-        <div className="relative mt-16">
-          {/* vertical line */}
-          <div
-            className="absolute left-[19px] top-2 bottom-2 w-px bg-gradient-to-b from-accent/50 via-border to-transparent sm:left-[23px]"
-            aria-hidden
-          />
-
-          <div className="space-y-10">
-            {experience.map((role, i) => (
-              <Reveal key={`${role.title}-${i}`} y={28} delay={i * 0.05}>
-                <div className="relative grid grid-cols-[40px_1fr] gap-4 sm:grid-cols-[48px_1fr] sm:gap-6">
-                  <div className="relative z-10 flex justify-center">
-                    <motion.span
-                      initial={{ scale: 0 }}
-                      whileInView={{ scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                      className={`grid h-10 w-10 place-items-center rounded-full border-2 sm:h-12 sm:w-12 ${
-                        role.current
-                          ? "border-accent bg-accent text-white"
-                          : "border-border bg-surface text-fg-muted"
-                      }`}
-                    >
-                      <Briefcase size={18} />
-                    </motion.span>
-                  </div>
-
-                  <div className="rounded-2xl border border-border bg-surface p-5 sm:p-6">
-                    <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-                      <h3 className="font-display text-lg font-bold">{role.title}</h3>
-                      <span className="font-mono text-xs text-accent">{role.period}</span>
-                    </div>
-                    <p className="mt-0.5 text-sm font-medium text-fg-muted">
-                      {role.company} · {role.location}
-                      {role.current && (
-                        <span className="ml-2 inline-flex items-center gap-1 rounded-full bg-emerald-500/10 px-2 py-0.5 text-[10px] font-semibold text-emerald-500">
-                          <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" /> Current
-                        </span>
-                      )}
-                    </p>
-                    <p className="mt-3 text-sm leading-relaxed text-fg-muted text-pretty">
-                      {role.summary}
-                    </p>
-                    <ul className="mt-4 grid gap-2">
-                      {role.achievements.map((a) => (
-                        <li key={a} className="flex gap-2.5 text-sm text-fg-muted">
-                          <Check size={15} className="mt-0.5 shrink-0 text-accent" />
-                          <span className="text-pretty">{a}</span>
-                        </li>
-                      ))}
-                    </ul>
-                    <div className="mt-4 flex flex-wrap gap-1.5">
-                      {role.tags.map((t) => (
-                        <span
-                          key={t}
-                          className="rounded-md bg-surface-2 px-2 py-0.5 text-[11px] font-medium text-fg-subtle"
-                        >
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-
-            {/* Education node */}
-            <Reveal y={28}>
-              <div className="relative grid grid-cols-[40px_1fr] gap-4 sm:grid-cols-[48px_1fr] sm:gap-6">
-                <div className="relative z-10 flex justify-center">
-                  <span className="grid h-10 w-10 place-items-center rounded-full border-2 border-border bg-surface text-fg-muted sm:h-12 sm:w-12">
-                    <GraduationCap size={18} />
-                  </span>
-                </div>
-                <div className="rounded-2xl border border-border bg-surface p-5 sm:p-6">
-                  {education.map((e) => (
-                    <div key={e.school}>
-                      <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-                        <h3 className="font-display text-lg font-bold">{e.degree}</h3>
-                        <span className="font-mono text-xs text-accent">{e.period}</span>
-                      </div>
-                      <p className="mt-0.5 text-sm font-medium text-fg-muted">
-                        {e.school} · {e.detail}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </Reveal>
+      <div className="mx-auto max-w-7xl px-6">
+        {/* Header */}
+        <div className="border-border flex items-end justify-between gap-6 border-b py-20 md:py-24">
+          <div>
+            <p className="text-accent mb-4 font-mono text-xs tracking-[0.2em] uppercase">
+              03 // Experience
+            </p>
+            <RevealHeading>
+              <h2 className="font-display text-4xl font-extrabold tracking-tight md:text-5xl">
+                Where I&apos;ve <span className="text-fg-muted font-light italic">shipped.</span>
+              </h2>
+            </RevealHeading>
           </div>
         </div>
-      </Container>
+
+        {/* Timeline */}
+        <div ref={containerRef} className="relative py-12">
+          {/* Vertical line */}
+          <div className="bg-border absolute top-0 bottom-0 left-0 hidden w-px overflow-hidden lg:block">
+            <motion.div
+              style={reduce ? { height: "100%" } : { height: lineH }}
+              className="bg-accent w-full origin-top"
+            />
+          </div>
+
+          <div className="flex flex-col">
+            {experience.map((job, i) => (
+              <motion.div
+                key={`${job.company}-${job.title}`}
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.7, delay: i * 0.1, ease }}
+                className="border-border relative grid grid-cols-1 gap-6 border-b py-10 last:border-b-0 md:grid-cols-12 lg:pl-12"
+              >
+                {/* Timeline dot */}
+                <div className="border-bg bg-accent absolute top-11 left-0 hidden h-2.5 w-2.5 -translate-x-1/2 rounded-full border-2 lg:block" />
+
+                {/* Left: meta */}
+                <div className="md:col-span-4">
+                  <p className="text-fg-subtle mb-3 flex items-center gap-2 font-mono text-[10px] tracking-widest uppercase">
+                    {job.period}
+                    {job.current && (
+                      <span className="border-accent/40 text-accent inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[9px]">
+                        <span className="bg-accent h-1 w-1 animate-pulse rounded-full" /> Current
+                      </span>
+                    )}
+                  </p>
+                  <h3 className="font-display text-fg text-2xl font-extrabold">{job.company}</h3>
+                  <p className="text-accent mt-1 text-sm font-medium">{job.title}</p>
+                  <p className="text-fg-muted mt-2 font-mono text-xs">{job.location}</p>
+                </div>
+
+                {/* Right: content */}
+                <div className="md:col-span-8">
+                  <p className="text-fg-muted mb-6 leading-relaxed">{job.summary}</p>
+                  <ul className="flex flex-col gap-3">
+                    {job.achievements.map((a, j) => (
+                      <motion.li
+                        key={j}
+                        initial={{ opacity: 0, x: 16 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.1 + j * 0.06, duration: 0.5 }}
+                        className="text-fg-muted flex items-start gap-3 text-sm"
+                      >
+                        <span className="bg-accent mt-2 h-1 w-1 flex-shrink-0 rounded-full" />
+                        {a}
+                      </motion.li>
+                    ))}
+                  </ul>
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    {job.tags.map((t) => (
+                      <span
+                        key={t}
+                        className="border-border text-fg-subtle rounded-full border px-2.5 py-1 font-mono text-[11px]"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* Education */}
+        <div className="border-border border-t py-12">
+          <p className="text-fg-muted mb-8 font-mono text-xs tracking-[0.2em] uppercase">
+            {"// Education"}
+          </p>
+          {education.map((ed) => (
+            <div
+              key={ed.school}
+              className="grid grid-cols-1 gap-4 md:grid-cols-12 md:items-baseline"
+            >
+              <p className="text-fg-subtle font-mono text-[10px] tracking-widest uppercase md:col-span-4">
+                {ed.period}
+              </p>
+              <div className="md:col-span-8">
+                <h3 className="font-display text-fg text-lg font-bold">{ed.school}</h3>
+                <p className="text-fg-muted mt-1 text-sm">
+                  {ed.degree} · <span className="text-accent">{ed.detail}</span>
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
     </section>
   );
 }

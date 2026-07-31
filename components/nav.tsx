@@ -78,9 +78,9 @@ export function Nav() {
       >
         <Link
           href="#top"
-          className="flex items-center gap-2 pl-1 font-display text-sm font-bold tracking-tight"
+          className="font-display flex items-center gap-2 pl-1 text-sm font-bold tracking-tight"
         >
-          <span className="grid h-7 w-7 place-items-center rounded-full bg-accent text-[13px] font-bold text-white">
+          <span className="bg-accent grid h-7 w-7 place-items-center rounded-full text-[13px] font-bold text-white">
             N
           </span>
           <span className="hidden sm:inline">Nandini Vaswani</span>
@@ -102,7 +102,7 @@ export function Nav() {
                 {isActive && (
                   <motion.span
                     layoutId="nav-active-pill"
-                    className="absolute inset-0 -z-10 rounded-full bg-surface-2"
+                    className="bg-surface-2 absolute inset-0 -z-10 rounded-full"
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}
@@ -114,7 +114,10 @@ export function Nav() {
 
         <div className="flex items-center gap-2">
           <ThemeToggle />
-          <Link href="/resume" className={cn(buttonStyles("primary"), "hidden px-4 py-2 text-[13px] sm:inline-flex")}>
+          <Link
+            href="/resume"
+            className={cn(buttonStyles("primary"), "hidden px-4 py-2 text-[13px] sm:inline-flex")}
+          >
             Resume
           </Link>
           <button
@@ -122,7 +125,7 @@ export function Nav() {
             aria-label="Toggle menu"
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
-            className="grid h-9 w-9 place-items-center rounded-full border border-border text-fg-muted md:hidden"
+            className="border-border text-fg-muted grid h-9 w-9 place-items-center rounded-full border md:hidden"
           >
             {open ? <X size={18} /> : <Menu size={18} />}
           </button>
@@ -135,7 +138,7 @@ export function Nav() {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="absolute top-20 z-50 w-[calc(100%-2rem)] max-w-5xl overflow-hidden rounded-2xl glass p-2 md:hidden"
+            className="glass absolute top-20 z-50 w-[calc(100%-2rem)] max-w-5xl overflow-hidden rounded-2xl p-2 md:hidden"
           >
             {links.map((l) => {
               const isActive = active === l.href.slice(1);
@@ -153,7 +156,7 @@ export function Nav() {
                   )}
                 >
                   {l.label}
-                  {isActive && <span className="h-1.5 w-1.5 rounded-full bg-accent" />}
+                  {isActive && <span className="bg-accent h-1.5 w-1.5 rounded-full" />}
                 </Link>
               );
             })}

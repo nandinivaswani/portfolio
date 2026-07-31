@@ -7,11 +7,11 @@ import { cn } from "@/lib/utils";
 
 export function ResumeActions() {
   return (
-    <div className="no-print sticky top-0 z-50 border-b border-border bg-bg/80 backdrop-blur">
+    <div className="no-print border-border bg-bg/80 sticky top-0 z-50 border-b backdrop-blur">
       <div className="mx-auto flex max-w-3xl items-center justify-between gap-3 px-5 py-3">
         <Link
           href="/"
-          className="inline-flex items-center gap-1.5 text-sm font-medium text-fg-muted transition-colors hover:text-fg"
+          className="text-fg-muted hover:text-fg inline-flex items-center gap-1.5 text-sm font-medium transition-colors"
         >
           <ArrowLeft size={16} /> Back to portfolio
         </Link>

@@ -11,6 +11,16 @@ import {
   Star,
   Trophy,
   Medal,
+  Brain,
+  Truck,
+  CalendarDays,
+  Building2,
+  DoorOpen,
+  CalendarClock,
+  Megaphone,
+  Users,
+  Newspaper,
+  LayoutDashboard,
   type LucideIcon,
 } from "lucide-react";
 
@@ -27,6 +37,16 @@ const map: Record<string, LucideIcon> = {
   Star,
   Trophy,
   Medal,
+  Brain,
+  Truck,
+  CalendarDays,
+  Building2,
+  DoorOpen,
+  CalendarClock,
+  Megaphone,
+  Users,
+  Newspaper,
+  LayoutDashboard,
 };
 
 export function Icon({

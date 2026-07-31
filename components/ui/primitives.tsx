@@ -2,31 +2,15 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import type { ComponentProps, ReactNode } from "react";
 
-export function Container({
-  className,
-  children,
-}: {
-  className?: string;
-  children: ReactNode;
-}) {
-  return (
-    <div className={cn("mx-auto w-full max-w-6xl px-5 sm:px-8", className)}>
-      {children}
-    </div>
-  );
+export function Container({ className, children }: { className?: string; children: ReactNode }) {
+  return <div className={cn("mx-auto w-full max-w-6xl px-5 sm:px-8", className)}>{children}</div>;
 }
 
-export function Badge({
-  children,
-  className,
-}: {
-  children: ReactNode;
-  className?: string;
-}) {
+export function Badge({ children, className }: { children: ReactNode; className?: string }) {
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-1.5 rounded-full border border-border bg-surface-2 px-3 py-1 text-xs font-medium text-fg-muted",
+        "border-border bg-surface-2 text-fg-muted inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium",
         className,
       )}
     >
@@ -41,17 +25,9 @@ type ButtonProps = {
   children: ReactNode;
 } & ComponentProps<typeof Link>;
 
-export function ButtonLink({
-  variant = "primary",
-  className,
-  children,
-  ...props
-}: ButtonProps) {
+export function ButtonLink({ variant = "primary", className, children, ...props }: ButtonProps) {
   return (
-    <Link
-      className={cn(buttonStyles(variant), className)}
-      {...props}
-    >
+    <Link className={cn(buttonStyles(variant), className)} {...props}>
       {children}
     </Link>
   );
@@ -92,13 +68,13 @@ export function SectionHeading({
       )}
     >
       {eyebrow && <span className="mono-label">{eyebrow}</span>}
-      <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-[2.6rem] text-balance">
+      <h2 className="text-3xl font-bold tracking-tight text-balance sm:text-4xl md:text-[2.6rem]">
         {title}
       </h2>
       {description && (
         <p
           className={cn(
-            "max-w-2xl text-base leading-relaxed text-fg-muted text-pretty",
+            "text-fg-muted max-w-2xl text-base leading-relaxed text-pretty",
             align === "center" && "mx-auto",
           )}
         >

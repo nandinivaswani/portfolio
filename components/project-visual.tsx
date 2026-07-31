@@ -29,13 +29,7 @@ export function ProjectVisual({ project }: { project: Project }) {
   return <CampaignMock grad={grad} />;
 }
 
-function Frame({
-  children,
-  grad,
-}: {
-  children: React.ReactNode;
-  grad: string;
-}) {
+function Frame({ children, grad }: { children: React.ReactNode; grad: string }) {
   return (
     <div className="relative">
       <div
@@ -43,8 +37,8 @@ function Frame({
         style={{ background: grad }}
         aria-hidden
       />
-      <div className="overflow-hidden rounded-2xl border border-border bg-surface shadow-[0_24px_70px_-30px_rgba(0,0,0,0.45)]">
-        <div className="flex items-center gap-1.5 border-b border-border bg-surface-2 px-4 py-3">
+      <div className="border-border bg-surface overflow-hidden rounded-2xl border shadow-[0_24px_70px_-30px_rgba(0,0,0,0.45)]">
+        <div className="border-border bg-surface-2 flex items-center gap-1.5 border-b px-4 py-3">
           <span className="h-2.5 w-2.5 rounded-full bg-red-400/70" />
           <span className="h-2.5 w-2.5 rounded-full bg-amber-400/70" />
           <span className="h-2.5 w-2.5 rounded-full bg-emerald-400/70" />
@@ -63,7 +57,7 @@ function VideoPlayerMock({ grad, live }: { grad: string; live: boolean }) {
         {/* storyboard scrub markers */}
         <div className="absolute inset-x-0 top-3 flex justify-between px-3">
           {live && (
-            <span className="inline-flex items-center gap-1.5 rounded-md bg-red-600 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white">
+            <span className="inline-flex items-center gap-1.5 rounded-md bg-red-600 px-2 py-0.5 text-[10px] font-bold tracking-wide text-white uppercase">
               <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-white" />
               Live
             </span>
@@ -111,9 +105,7 @@ function VideoPlayerMock({ grad, live }: { grad: string; live: boolean }) {
           <div className="mt-2.5 flex items-center gap-3 text-white">
             <Pause size={15} />
             <Volume2 size={15} />
-            <span className="text-[10px] font-medium tabular-nums opacity-80">
-              24:18 / 39:02
-            </span>
+            <span className="text-[10px] font-medium tabular-nums opacity-80">24:18 / 39:02</span>
             <span className="ml-auto" />
             <Maximize size={15} />
           </div>
@@ -135,23 +127,23 @@ function CardMock({ grad }: { grad: string }) {
           >
             <Globe size={22} />
           </div>
-          <p className="mt-4 font-display text-lg font-bold">CardZap</p>
-          <p className="text-xs text-fg-muted">Digital business cards · PWA</p>
+          <p className="font-display mt-4 text-lg font-bold">CardZap</p>
+          <p className="text-fg-muted text-xs">Digital business cards · PWA</p>
           <div className="mt-4 flex flex-wrap gap-1.5">
             {langs.map((l) => (
               <span
                 key={l}
-                className="rounded-md border border-border bg-surface-2 px-1.5 py-0.5 text-[10px] font-medium text-fg-muted"
+                className="border-border bg-surface-2 text-fg-muted rounded-md border px-1.5 py-0.5 text-[10px] font-medium"
               >
                 {l}
               </span>
             ))}
-            <span className="rounded-md bg-accent-soft px-1.5 py-0.5 text-[10px] font-medium text-accent">
+            <span className="bg-accent-soft text-accent rounded-md px-1.5 py-0.5 text-[10px] font-medium">
               +22 more
             </span>
           </div>
         </div>
-        <div className="grid aspect-[3/4] w-24 place-items-center self-center rounded-lg border border-border bg-surface-2">
+        <div className="border-border bg-surface-2 grid aspect-[3/4] w-24 place-items-center self-center rounded-lg border">
           <div className="grid grid-cols-4 grid-rows-4 gap-0.5">
             {Array.from({ length: 16 }).map((_, i) => (
               <span
@@ -178,7 +170,7 @@ function CodeMock({ grad }: { grad: string }) {
   return (
     <Frame grad={grad}>
       <div className="p-5 font-mono text-xs">
-        <div className="mb-3 flex items-center gap-2 text-fg-subtle">
+        <div className="text-fg-subtle mb-3 flex items-center gap-2">
           <Code2 size={14} /> use-courses.generated.ts
         </div>
         <div className="space-y-2">
@@ -191,8 +183,11 @@ function CodeMock({ grad }: { grad: string }) {
               transition={{ delay: i * 0.08 }}
               className="flex items-center gap-3"
             >
-              <span className="w-4 text-right text-fg-subtle">{i + 1}</span>
-              <span className={`h-2.5 rounded-full ${l.c} bg-current opacity-60`} style={{ width: l.w }} />
+              <span className="text-fg-subtle w-4 text-right">{i + 1}</span>
+              <span
+                className={`h-2.5 rounded-full ${l.c} bg-current opacity-60`}
+                style={{ width: l.w }}
+              />
             </motion.div>
           ))}
         </div>
@@ -224,7 +219,7 @@ function CampaignMock({ grad }: { grad: string }) {
           </motion.div>
         </div>
         {/* scroll reveal hint blocks */}
-        <div className="absolute right-5 top-5 space-y-2">
+        <div className="absolute top-5 right-5 space-y-2">
           {[0, 1, 2].map((i) => (
             <motion.div
               key={i}

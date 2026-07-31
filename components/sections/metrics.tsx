@@ -41,8 +41,11 @@ function Counter({ value, suffix }: { value: string; suffix?: string }) {
 
 export function Metrics() {
   return (
-    <section className="relative overflow-hidden border-y border-border bg-bg-soft py-16">
-      <div className="glow absolute left-1/2 top-0 h-64 w-[600px] -translate-x-1/2 opacity-10" aria-hidden />
+    <section className="border-border bg-bg-soft relative overflow-hidden border-y py-16">
+      <div
+        className="glow absolute top-0 left-1/2 h-64 w-[600px] -translate-x-1/2 opacity-10"
+        aria-hidden
+      />
       <Container>
         <div className="grid grid-cols-2 gap-8 sm:gap-4 lg:grid-cols-4">
           {impactMetrics.map((m, i) => (
@@ -57,8 +60,8 @@ export function Metrics() {
               <div className="font-display text-4xl font-extrabold tracking-tight sm:text-5xl">
                 <Counter value={m.value} suffix={m.suffix} />
               </div>
-              <p className="mt-2 text-sm font-semibold text-fg">{m.label}</p>
-              <p className="mt-0.5 text-xs text-fg-subtle">{m.sub}</p>
+              <p className="text-fg mt-2 text-sm font-semibold">{m.label}</p>
+              <p className="text-fg-subtle mt-0.5 text-xs">{m.sub}</p>
             </motion.div>
           ))}
         </div>

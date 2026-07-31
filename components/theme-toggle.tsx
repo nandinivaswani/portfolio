@@ -12,14 +12,14 @@ export function ThemeToggle() {
   // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => setMounted(true), []);
 
-  const isDark = resolvedTheme === "dark";
+  const isDark = mounted && resolvedTheme === "dark";
 
   return (
     <button
       type="button"
       aria-label={`Switch to ${isDark ? "light" : "dark"} mode`}
       onClick={() => setTheme(isDark ? "light" : "dark")}
-      className="relative inline-flex h-9 w-9 items-center justify-center rounded-full border border-border bg-surface/60 text-fg-muted backdrop-blur transition-colors hover:text-accent hover:border-accent"
+      className="border-border bg-surface/60 text-fg-muted hover:text-accent hover:border-accent relative inline-flex h-9 w-9 items-center justify-center rounded-full border backdrop-blur transition-colors"
     >
       {mounted && (
         <AnimatePresence mode="wait" initial={false}>

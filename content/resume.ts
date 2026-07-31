@@ -10,7 +10,7 @@ export const resume = {
     { label: "GitHub", href: "github.com/nandinivaswani" },
   ],
   summary:
-    "Senior Frontend Engineer with 4.5+ years building production React & Next.js applications, specializing in OTT/video-streaming platforms. I architect custom HLS video players, GraphQL data layers, subscription experiences, and white-label multi-tenant frontends — with a strong focus on performance, accessibility, and internationalization.",
+    "Senior Frontend Engineer with 4.5+ years building production React & Next.js applications, specializing in OTT/video-streaming platforms. I architect custom HLS video players, GraphQL data layers, subscription experiences, and white-label multi-tenant frontends — with a strong focus on performance, accessibility, and internationalization. I began my career with hands-on AI/ML experience, which continues to inform my work on AI-assisted products.",
   // ATS-friendly: a flat, scannable skills list grouped by area
   skills: [
     {
@@ -59,6 +59,10 @@ export const resume = {
         "Accessibility (WCAG)",
         "Git",
       ],
+    },
+    {
+      group: "AI / ML Foundations",
+      items: ["Python", "Computer Vision", "ML fundamentals", "AI-assisted product development"],
     },
   ],
   experience: [

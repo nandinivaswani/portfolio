@@ -7,7 +7,7 @@ export const site = {
   tagline:
     "I build complex, high-performance React applications — from custom video players and streaming platforms to global SaaS, AI-assisted products, and reusable design systems.",
   shortBio:
-    "Senior Frontend Engineer with 4.5+ years architecting complex React & Next.js applications. I've shipped custom HLS video players and OTT platforms, but also global multi-language SaaS, AI-assisted products, content systems, and reusable component libraries — always with a focus on performance, accessibility, and clean architecture.",
+    "Senior Frontend Engineer with 4.5+ years architecting complex React & Next.js applications. I've shipped custom HLS video players and OTT platforms, but also global multi-language SaaS, AI-assisted products, content systems, and reusable component libraries — always with a focus on performance, accessibility, and clean architecture. I started my career with a hands-on foundation in AI/ML, which still shapes how I approach AI-assisted products today.",
   location: "Surat, Gujarat, India",
   locationShort: "Surat, India · Remote-friendly",
   email: "nandinivaswani83@gmail.com",

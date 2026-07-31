@@ -1,15 +1,15 @@
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
 import { ScrollProgress } from "@/components/scroll-progress";
+import { CursorGlow } from "@/components/cursor-glow";
+import { PageIntro } from "@/components/page-intro";
 import { Hero } from "@/components/sections/hero";
-import { Brands } from "@/components/sections/brands";
-import { About } from "@/components/sections/about";
+import { WhyFE } from "@/components/sections/why-fe";
+import { TerminalStrip } from "@/components/terminal-strip";
+import { Manifesto } from "@/components/sections/manifesto";
 import { Projects } from "@/components/sections/projects";
-import { MoreProjects } from "@/components/sections/more-projects";
-import { Metrics } from "@/components/sections/metrics";
 import { Experience } from "@/components/sections/experience";
 import { Skills } from "@/components/sections/skills";
-import { Highlights } from "@/components/sections/highlights";
 import { Contact } from "@/components/sections/contact";
 import { site } from "@/content/site";
 import { projects } from "@/content/projects";
@@ -17,18 +17,18 @@ import { projects } from "@/content/projects";
 export default function Home() {
   return (
     <>
+      <PageIntro />
+      <CursorGlow />
       <ScrollProgress />
       <Nav />
       <main id="main">
         <Hero />
-        <Brands />
-        <About />
+        <WhyFE />
+        <TerminalStrip />
+        <Manifesto />
         <Projects />
-        <MoreProjects />
-        <Metrics />
         <Experience />
         <Skills />
-        <Highlights />
         <Contact />
       </main>
       <Footer />

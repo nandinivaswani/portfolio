@@ -1,8 +1,18 @@
 // Career highlights, impact metrics, testimonials, achievements
 
 export const impactMetrics: { value: string; suffix?: string; label: string; sub: string }[] = [
-  { value: "4.5", suffix: "+", label: "Years in production", sub: "Frontend engineering since 2021" },
-  { value: "15", suffix: "+", label: "Platforms shipped", sub: "Across streaming, SaaS & marketing" },
+  {
+    value: "4.5",
+    suffix: "+",
+    label: "Years in production",
+    sub: "Frontend engineering since 2021",
+  },
+  {
+    value: "15",
+    suffix: "+",
+    label: "Platforms shipped",
+    sub: "Across streaming, SaaS & marketing",
+  },
   { value: "5", suffix: "+", label: "Product domains", sub: "Video, SaaS, AI, CMS & marketing" },
   { value: "30", suffix: "~", label: "Languages localized", sub: "Global i18n delivery" },
 ];

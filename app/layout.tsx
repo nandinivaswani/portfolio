@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono, Sora } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import { SmoothScroll } from "@/components/smooth-scroll";
+import { SiteBackdrop } from "@/components/site-backdrop";
 import { site } from "@/content/site";
 
 const inter = Inter({
@@ -66,9 +68,7 @@ export const viewport: Viewport = {
   ],
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html
       lang="en"
@@ -76,12 +76,9 @@ export default function RootLayout({
       className={`${inter.variable} ${sora.variable} ${jetbrains.variable} h-full antialiased`}
     >
       <body className="min-h-full font-sans">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-        >
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
+          <SmoothScroll />
+          <SiteBackdrop />
           {children}
         </ThemeProvider>
       </body>

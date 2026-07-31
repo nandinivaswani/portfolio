@@ -1,66 +1,109 @@
-import Link from "next/link";
-import { Mail, MapPin, ArrowUpRight, FileText } from "lucide-react";
+"use client";
+
+import { motion } from "motion/react";
+import { Mail } from "lucide-react";
 import { Github, Linkedin } from "@/components/ui/brand-icons";
-import { Container, buttonStyles } from "@/components/ui/primitives";
-import { Reveal } from "@/components/ui/reveal";
 import { site } from "@/content/site";
+import { SectionGlow } from "@/components/section-fx";
+import { HexField } from "@/components/section-bg";
+import { Magnetic } from "@/components/motion-fx";
+
+const ease = [0.16, 1, 0.3, 1] as const;
+
+const socials = [
+  { label: "GitHub", href: site.socials.github, icon: Github },
+  { label: "LinkedIn", href: site.socials.linkedin, icon: Linkedin },
+  { label: "Email", href: site.socials.email, icon: Mail },
+];
 
 export function Contact() {
   return (
-    <section id="contact" className="relative scroll-mt-24 py-24">
-      <Container>
-        <Reveal y={28}>
-          <div className="grain relative overflow-hidden rounded-[2rem] border border-border bg-gradient-to-b from-surface to-bg-soft p-8 sm:p-14">
-            <div
-              className="glow absolute -top-20 left-1/2 h-72 w-[560px] -translate-x-1/2 opacity-20"
-              aria-hidden
-            />
-            <div className="relative mx-auto max-w-2xl text-center">
-              <span className="mono-label">Contact</span>
-              <h2 className="mt-3 font-display text-3xl font-bold tracking-tight sm:text-5xl text-balance">
-                Let&apos;s build something{" "}
-                <span className="text-gradient">worth streaming.</span>
-              </h2>
-              <p className="mx-auto mt-5 max-w-xl leading-relaxed text-fg-muted text-pretty">
-                I&apos;m currently {site.availability.toLowerCase()}. If you&apos;re
-                building a media platform, a complex React product, or just need a
-                senior frontend engineer who owns the hard parts — let&apos;s talk.
-              </p>
+    <section
+      id="contact"
+      className="border-border relative isolate scroll-mt-16 overflow-hidden border-t"
+    >
+      <SectionGlow className="top-1/3 right-[-6%] h-[520px] w-[520px]" opacity={0.08} />
+      <HexField />
 
-              <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-                <a href={site.socials.email} className={buttonStyles("primary")}>
-                  <Mail size={16} />
-                  {site.email}
-                </a>
-                <Link href="/resume" className={buttonStyles("outline")}>
-                  <FileText size={16} />
-                  View resume
-                </Link>
-              </div>
+      <div className="mx-auto max-w-7xl px-6">
+        {/* Header */}
+        <div className="border-border border-b py-20 md:py-24">
+          <p className="text-accent font-mono text-xs tracking-[0.2em] uppercase">05 // Contact</p>
+        </div>
 
-              <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-fg-muted">
-                <span className="inline-flex items-center gap-1.5">
-                  <MapPin size={14} /> {site.locationShort}
-                </span>
-                <a
-                  href={site.socials.linkedin}
-                  className="group inline-flex items-center gap-1.5 transition-colors hover:text-fg"
-                >
-                  <Linkedin size={14} /> LinkedIn
-                  <ArrowUpRight size={12} className="opacity-0 transition-opacity group-hover:opacity-100" />
-                </a>
-                <a
-                  href={site.socials.github}
-                  className="group inline-flex items-center gap-1.5 transition-colors hover:text-fg"
-                >
-                  <Github size={14} /> GitHub
-                  <ArrowUpRight size={12} className="opacity-0 transition-opacity group-hover:opacity-100" />
-                </a>
-              </div>
+        {/* Giant CTA block */}
+        <div className="flex flex-col items-start py-20 md:py-28">
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease }}
+            className="text-fg-muted mb-6 max-w-md text-lg"
+          >
+            Have a product that deserves world-class frontend engineering — streaming, SaaS or
+            something new? Let&apos;s talk.
+          </motion.p>
+
+          <motion.a
+            href={`mailto:${site.email}`}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.1, ease }}
+            whileHover={{ x: 6 }}
+            className="group flex items-baseline gap-4"
+          >
+            <span
+              className="font-display text-fg group-hover:text-accent leading-[0.9] font-extrabold tracking-tight transition-colors duration-300"
+              style={{ fontSize: "clamp(28px, 5.5vw, 72px)", wordBreak: "break-word" }}
+            >
+              {site.email}
+            </span>
+            <motion.span
+              animate={{ x: [0, 5, 0] }}
+              transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
+              className="text-accent self-center text-2xl"
+            >
+              →
+            </motion.span>
+          </motion.a>
+
+          {/* Divider */}
+          <motion.div
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.3, ease }}
+            className="bg-border mt-16 h-px w-full origin-left"
+          />
+
+          {/* Bottom strip */}
+          <div className="mt-12 flex w-full flex-col items-start justify-between gap-8 md:flex-row md:items-center">
+            <div className="flex items-center gap-3">
+              <span className="bg-accent h-2 w-2 animate-pulse rounded-full" />
+              <span className="text-fg text-sm font-medium">
+                {site.availability} — {site.locationShort}
+              </span>
+            </div>
+
+            <div className="flex items-center gap-1">
+              {socials.map(({ label, href, icon: Icon }) => (
+                <Magnetic key={label} strength={0.4}>
+                  <a
+                    href={href}
+                    target={href.startsWith("http") ? "_blank" : undefined}
+                    rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+                    aria-label={label}
+                    className="border-border text-fg-muted hover:border-fg/30 hover:text-fg flex h-10 w-10 items-center justify-center rounded-lg border transition-colors"
+                  >
+                    <Icon className="h-4 w-4" size={16} />
+                  </a>
+                </Magnetic>
+              ))}
             </div>
           </div>
-        </Reveal>
-      </Container>
+        </div>
+      </div>
     </section>
   );
 }

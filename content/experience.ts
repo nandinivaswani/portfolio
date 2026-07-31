@@ -46,8 +46,7 @@ export const experience: Role[] = [
     title: "AI / ML Intern",
     period: "Jan 2021 — Jun 2021",
     location: "Surat, India",
-    summary:
-      "Built ML-assisted utility apps before transitioning into frontend engineering.",
+    summary: "Built ML-assisted utility apps before transitioning into frontend engineering.",
     achievements: [
       "Built a Business Card Scanner that extracted and classified text fields from card images.",
       "Developed a duplicate-contact merging app and a whiteboard-focus detection tool for screen recordings.",

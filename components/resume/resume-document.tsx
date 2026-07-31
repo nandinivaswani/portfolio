@@ -9,9 +9,7 @@ export function ResumeDocument() {
         <h1 className="font-display text-[28px] font-extrabold tracking-tight text-zinc-900">
           {resume.name}
         </h1>
-        <p className="mt-0.5 text-[15px] font-semibold text-violet-700">
-          {resume.title}
-        </p>
+        <p className="mt-0.5 text-[15px] font-semibold text-violet-700">{resume.title}</p>
         <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-[11.5px] text-zinc-600">
           <span className="inline-flex items-center gap-1">
             <MapPin size={12} /> {resume.location}
@@ -114,7 +112,7 @@ export function ResumeDocument() {
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <section className="mt-5">
-      <h2 className="mb-2 text-[11px] font-bold uppercase tracking-[0.14em] text-violet-700">
+      <h2 className="mb-2 text-[11px] font-bold tracking-[0.14em] text-violet-700 uppercase">
         {title}
       </h2>
       {children}

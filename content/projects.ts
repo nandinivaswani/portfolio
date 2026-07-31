@@ -99,8 +99,7 @@ export const projects: Project[] = [
     category: "Global SaaS · i18n",
     year: "2022–2023",
     featured: true,
-    tagline:
-      "A global digital business-card SaaS localized into ~30 languages.",
+    tagline: "A global digital business-card SaaS localized into ~30 languages.",
     summary:
       "Product-ownership frontend for a SaaS that turns contact details into shareable, scannable digital cards — built for a global audience with ~30 language locales, Firebase auth, and offline-capable PWA delivery.",
     highlights: [
@@ -129,8 +128,7 @@ export const projects: Project[] = [
     category: "AI Product · Modern Stack",
     year: "2025",
     featured: true,
-    tagline:
-      "An AI-assisted education product on a fully type-safe GraphQL pipeline.",
+    tagline: "An AI-assisted education product on a fully type-safe GraphQL pipeline.",
     summary:
       "An AI-powered education platform built on a modern, fully type-safe frontend — React Router 7 with end-to-end GraphQL code generation and first-class dark mode.",
     highlights: [
@@ -143,7 +141,14 @@ export const projects: Project[] = [
       "React Router 7 data APIs for loaders/actions and streaming.",
       "Themeable design system with next-themes-style theming.",
     ],
-    stack: ["React 19", "React Router 7", "TypeScript", "Apollo GraphQL", "GraphQL Codegen", "Tailwind"],
+    stack: [
+      "React 19",
+      "React Router 7",
+      "TypeScript",
+      "Apollo GraphQL",
+      "GraphQL Codegen",
+      "Tailwind",
+    ],
     metrics: [
       { value: "Type-safe", label: "End-to-end GraphQL types" },
       { value: "AI", label: "AI-assisted product" },

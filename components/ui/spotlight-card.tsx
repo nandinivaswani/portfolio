@@ -33,14 +33,13 @@ export function SpotlightCard({
       ref={ref}
       onPointerMove={onMove}
       style={{ "--mx": "50%", "--my": "0%" } as React.CSSProperties}
-      className="group relative h-full overflow-hidden rounded-2xl border border-border bg-surface p-5 transition-[transform,border-color] duration-300 hover:-translate-y-1 hover:border-accent/50"
+      className="group border-border bg-surface hover:border-accent/50 relative h-full overflow-hidden rounded-2xl border p-5 transition-[transform,border-color] duration-300 hover:-translate-y-1"
     >
       {/* dot-grid texture, revealed around the cursor */}
       <div
         className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
         style={{
-          backgroundImage:
-            "radial-gradient(var(--color-fg-subtle) 1px, transparent 1px)",
+          backgroundImage: "radial-gradient(var(--color-fg-subtle) 1px, transparent 1px)",
           backgroundSize: "16px 16px",
           WebkitMaskImage:
             "radial-gradient(170px circle at var(--mx) var(--my), black 0%, transparent 70%)",
@@ -64,8 +63,7 @@ export function SpotlightCard({
         style={{
           background:
             "radial-gradient(220px circle at var(--mx) var(--my), color-mix(in oklab, var(--accent) 45%, transparent), transparent 65%)",
-          WebkitMask:
-            "linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)",
+          WebkitMask: "linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)",
           WebkitMaskComposite: "xor",
           maskComposite: "exclude",
           padding: "1px",
@@ -75,15 +73,15 @@ export function SpotlightCard({
 
       <div className="relative">
         <div className="mb-3 flex items-center justify-between">
-          <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-accent-soft text-accent transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-110">
+          <span className="bg-accent-soft text-accent inline-flex h-10 w-10 items-center justify-center rounded-xl transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6">
             <Icon name={icon} className="h-5 w-5" />
           </span>
-          <span className="font-mono text-[11px] text-fg-subtle/70 transition-colors group-hover:text-accent">
+          <span className="text-fg-subtle/70 group-hover:text-accent font-mono text-[11px] transition-colors">
             {String(index + 1).padStart(2, "0")}
           </span>
         </div>
         <h3 className="font-display text-base font-semibold">{title}</h3>
-        <p className="mt-1.5 text-sm leading-relaxed text-fg-muted">{description}</p>
+        <p className="text-fg-muted mt-1.5 text-sm leading-relaxed">{description}</p>
       </div>
     </div>
   );

@@ -19,14 +19,14 @@ A premium, production-ready portfolio for a **Senior Frontend Engineer specializ
 
 ## 🧱 Tech Stack
 
-| Area | Choice |
-|------|--------|
-| Framework | **Next.js 16** (App Router, Turbopack) |
-| Language | **TypeScript** / React 19 |
-| Styling | **Tailwind CSS v4** (CSS-first `@theme` tokens) |
-| Animation | **Motion** (`motion/react`) |
-| Icons | **Lucide** (+ local SVGs for brand marks) |
-| Theming | **next-themes** |
+| Area      | Choice                                          |
+| --------- | ----------------------------------------------- |
+| Framework | **Next.js 16** (App Router, Turbopack)          |
+| Language  | **TypeScript** / React 19                       |
+| Styling   | **Tailwind CSS v4** (CSS-first `@theme` tokens) |
+| Animation | **Motion** (`motion/react`)                     |
+| Icons     | **Lucide** (+ local SVGs for brand marks)       |
+| Theming   | **next-themes**                                 |
 
 ## 📁 Structure
 

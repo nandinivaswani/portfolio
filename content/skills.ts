@@ -45,6 +45,16 @@ export const skillGroups: SkillGroup[] = [
       { name: "PWA / offline", level: 82 },
     ],
   },
+  {
+    title: "AI / ML",
+    icon: "Brain",
+    skills: [
+      { name: "Python", level: 78 },
+      { name: "Computer Vision", level: 75 },
+      { name: "ML fundamentals", level: 74 },
+      { name: "AI-assisted products", level: 82 },
+    ],
+  },
 ];
 
 // Tech stack marquee — grouped logos/labels
@@ -72,6 +82,10 @@ export const techStack: { group: string; items: string[] }[] = [
   {
     group: "Platform",
     items: ["Stripe", "next-auth", "next-intl / i18next", "Sentry", "Vercel"],
+  },
+  {
+    group: "AI / ML",
+    items: ["Python", "Computer Vision", "ML fundamentals"],
   },
 ];
 
@@ -112,4 +126,24 @@ export const specialties: { title: string; description: string; icon: string }[]
     description:
       "Localization into ~30 languages with next-intl / i18next, RTL awareness and locale-routed rendering.",
   },
+];
+
+// Spoken languages — level drives the segmented fluency meter.
+export const languages: { name: string; level: "Native" | "Fluent" | "Professional" }[] = [
+  { name: "Gujarati", level: "Native" },
+  { name: "Sindhi", level: "Native" },
+  { name: "Hindi", level: "Fluent" },
+  { name: "English", level: "Professional" },
+];
+
+// Soft skills (from the résumé).
+export const softSkills: string[] = [
+  "Team work",
+  "Leadership",
+  "Time management",
+  "Problem solving",
+  "Communication",
+  "Quick learner",
+  "Ownership",
+  "Mentoring",
 ];
