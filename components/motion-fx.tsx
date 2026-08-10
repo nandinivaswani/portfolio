@@ -8,6 +8,7 @@ import {
   useReducedMotion,
   useScroll,
   useTransform,
+  useInView,
   type MotionValue,
 } from "motion/react";
 import {
@@ -20,17 +21,30 @@ import {
   type ReactNode,
 } from "react";
 
-/* ── ScrambleText: hover-triggered decode/scramble effect ────
+/* ── ScrambleText: decode/scramble effect ─────────────────────
    Cycles through random characters before settling back to the
    real word, left to right. className fully controls appearance
    (color/font/etc inherit from className if omitted, so it drops
-   cleanly into a parent heading's own styling). */
+   cleanly into a parent heading's own styling). Hover re-triggers
+   it by default; pass `auto` to also replay it, unprompted, every
+   time the word scrolls into view — for words that need to read
+   correctly even if nobody hovers them. */
 const scrambleChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%";
 
-export function ScrambleText({ word, className = "" }: { word: string; className?: string }) {
+export function ScrambleText({
+  word,
+  className = "",
+  auto = false,
+}: {
+  word: string;
+  className?: string;
+  auto?: boolean;
+}) {
   const reduce = useReducedMotion();
   const [display, setDisplay] = useState(word);
   const frameRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const ref = useRef<HTMLSpanElement>(null);
+  const inView = useInView(ref, { once: false, margin: "-40px" });
 
   const scramble = useCallback(() => {
     let iter = 0;
@@ -58,8 +72,15 @@ export function ScrambleText({ word, className = "" }: { word: string; className
     };
   }, []);
 
+  useEffect(() => {
+    // Replays on every arrival — the whole point of `auto` is that it
+    // doesn't depend on the user finding it and hovering.
+    if (auto && inView && !reduce) scramble();
+  }, [auto, inView, reduce, scramble]);
+
   return (
     <span
+      ref={ref}
       className={`cursor-pointer ${className}`}
       onMouseEnter={() => {
         if (!reduce) scramble();

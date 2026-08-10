@@ -76,7 +76,7 @@ export function SpotlightCard({
           <span className="bg-accent-soft text-accent inline-flex h-10 w-10 items-center justify-center rounded-xl transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6">
             <Icon name={icon} className="h-5 w-5" />
           </span>
-          <span className="text-fg-subtle/70 group-hover:text-accent font-mono text-[11px] transition-colors">
+          <span className="text-fg-subtle/70 group-hover:text-accent font-mono text-[13px] transition-colors">
             {String(index + 1).padStart(2, "0")}
           </span>
         </div>

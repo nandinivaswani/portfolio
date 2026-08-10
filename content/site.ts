@@ -3,11 +3,11 @@ export const site = {
   firstName: "Nandini",
   lastName: "Vaswani",
   role: "Senior Frontend Engineer",
-  specialism: "Streaming & Media Platforms",
+  specialism: "Complex Web Applications",
   tagline:
-    "I build complex, high-performance React applications — from custom video players and streaming platforms to global SaaS, AI-assisted products, and reusable design systems.",
+    "I take hard engineering problems — video streaming, global scale, AI-assisted products — and turn them into interfaces that feel effortless. Here's what that looks like in practice.",
   shortBio:
-    "Senior Frontend Engineer with 4.5+ years architecting complex React & Next.js applications. I've shipped custom HLS video players and OTT platforms, but also global multi-language SaaS, AI-assisted products, content systems, and reusable component libraries — always with a focus on performance, accessibility, and clean architecture. I started my career with a hands-on foundation in AI/ML, which still shapes how I approach AI-assisted products today.",
+    "Senior Frontend Engineer with 4.5+ years building complex React & Next.js applications. I've shipped custom HLS video players and OTT platforms, plus global multi-language SaaS, AI-assisted products, content systems, and reusable component libraries — always focused on performance, accessibility, and clean structure. I started my career with hands-on AI/ML work, which still shapes how I build AI-assisted products today.",
   location: "Surat, Gujarat, India",
   locationShort: "Surat, India · Remote-friendly",
   email: "nandinivaswani83@gmail.com",
@@ -24,9 +24,9 @@ export const site = {
   // Quick credibility metrics shown in the hero trust bar
   heroStats: [
     { value: "4.5+", label: "Years building for production" },
-    { value: "15+", label: "Platforms shipped end-to-end" },
+    { value: "15+", label: "Platforms shipped, start to finish" },
     { value: "5+", label: "Domains: video, SaaS, AI & more" },
-    { value: "~30", label: "Languages localized (i18n)" },
+    { value: "~30", label: "Languages localized" },
   ],
 } as const;
 

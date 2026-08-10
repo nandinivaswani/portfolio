@@ -19,10 +19,10 @@ export const experience: Role[] = [
     summary:
       "Lead frontend on the Cappital team's white-label OTT/media platform line — owning the video experience, custom players, and the shared architecture reused across multiple streaming brands.",
     achievements: [
-      "Architected and shipped a fully custom HLS video player (adaptive streaming, storyboard scrubbing, resume, live chat) powering the flagship streaming product.",
-      "Drove adoption of a modern stack in production — Next.js 16, React 19, Apollo Client 4, next-auth 5 — and set frontend patterns the team builds on.",
-      "Built subscription/paywall flows (Stripe), playback analytics (Matomo) and i18n across the platform suite.",
-      "Reused a single platform engine to launch multiple client streaming brands (DailyWire, Zeale, FRC, ThinQ and more) as themed white-label deployments.",
+      "Built and shipped a fully custom HLS video player (adaptive streaming, storyboard scrubbing, resume, live chat) powering the main streaming product.",
+      "Brought a modern stack into production — Next.js 16, React 19, Apollo Client 4, next-auth 5 — and set the frontend patterns the team builds on.",
+      "Built subscription/paywall flows (Stripe), playback analytics (Matomo) and language support across the platform.",
+      "Reused a single platform engine to launch multiple client streaming brands (DailyWire, Zeale, FRC, ThinQ and more) as separate, branded products.",
     ],
     tags: ["Next.js", "React", "TypeScript", "Apollo GraphQL", "hls.js", "Stripe", "Architecture"],
   },
@@ -32,10 +32,10 @@ export const experience: Role[] = [
     period: "Aug 2021 — 2023",
     location: "Surat, India",
     summary:
-      "Delivered 8+ production web apps across varied stacks (Next.js, MobX, Ant Design), with a focus on performance and data-layer efficiency.",
+      "Delivered 8+ production web apps across varied stacks (Next.js, MobX, Ant Design), with a focus on performance and faster data loading.",
     achievements: [
       "Cut network round-trips and sped up apps by caching data with Apollo Client and React lazy queries.",
-      "Implemented role-based access management across multiple web apps.",
+      "Added role-based access control across multiple web apps.",
       "Built Firebase auth with a single-login, dual-session cookie strategy for the CardZap product.",
       "Localized CardZap into ~30 languages and shipped it as an offline-capable PWA.",
     ],

@@ -50,7 +50,7 @@ export function Highlights() {
                     </span>
                     <div>
                       <p className="text-sm leading-snug font-semibold">{a.title}</p>
-                      <p className="text-fg-subtle text-xs">{a.org}</p>
+                      <p className="text-fg-subtle text-sm">{a.org}</p>
                     </div>
                   </div>
                 ))}
@@ -58,9 +58,9 @@ export function Highlights() {
               <div className="mt-auto pt-6">
                 <div className="border-border bg-surface/50 rounded-xl border border-dashed p-4">
                   <p className="text-fg-muted text-sm leading-relaxed">
-                    <span className="text-fg font-semibold">Innovation-driven:</span> a national
-                    hackathon win and a consistent track record of shipping the hard, novel features
-                    first.
+                    <span className="text-fg font-semibold">Track record:</span> a national
+                    hackathon win, plus the video player, i18n system and platform architecture
+                    above — all things I built first, then reused.
                   </p>
                 </div>
               </div>

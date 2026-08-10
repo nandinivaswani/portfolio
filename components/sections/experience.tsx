@@ -65,17 +65,17 @@ export function Experience() {
 
                 {/* Left: meta */}
                 <div className="md:col-span-4">
-                  <p className="text-fg-subtle mb-3 flex items-center gap-2 font-mono text-[10px] tracking-widest uppercase">
+                  <p className="text-fg-subtle mb-3 flex items-center gap-2 font-mono text-[12px] tracking-widest uppercase">
                     {job.period}
                     {job.current && (
-                      <span className="border-accent/40 text-accent inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[9px]">
+                      <span className="border-accent/40 text-accent inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[11px]">
                         <span className="bg-accent h-1 w-1 animate-pulse rounded-full" /> Current
                       </span>
                     )}
                   </p>
                   <h3 className="font-display text-fg text-2xl font-extrabold">{job.company}</h3>
                   <p className="text-accent mt-1 text-sm font-medium">{job.title}</p>
-                  <p className="text-fg-muted mt-2 font-mono text-xs">{job.location}</p>
+                  <p className="text-fg-muted mt-2 font-mono text-sm">{job.location}</p>
                 </div>
 
                 {/* Right: content */}
@@ -100,7 +100,7 @@ export function Experience() {
                     {job.tags.map((t) => (
                       <span
                         key={t}
-                        className="border-border text-fg-subtle rounded-full border px-2.5 py-1 font-mono text-[11px]"
+                        className="border-border text-fg-subtle rounded-full border px-2.5 py-1 font-mono text-[13px]"
                       >
                         {t}
                       </span>
@@ -122,7 +122,7 @@ export function Experience() {
               key={ed.school}
               className="grid grid-cols-1 gap-4 md:grid-cols-12 md:items-baseline"
             >
-              <p className="text-fg-subtle font-mono text-[10px] tracking-widest uppercase md:col-span-4">
+              <p className="text-fg-subtle font-mono text-[12px] tracking-widest uppercase md:col-span-4">
                 {ed.period}
               </p>
               <div className="md:col-span-8">

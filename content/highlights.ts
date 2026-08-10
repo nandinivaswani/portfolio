@@ -14,32 +14,32 @@ export const impactMetrics: { value: string; suffix?: string; label: string; sub
     sub: "Across streaming, SaaS & marketing",
   },
   { value: "5", suffix: "+", label: "Product domains", sub: "Video, SaaS, AI, CMS & marketing" },
-  { value: "30", suffix: "~", label: "Languages localized", sub: "Global i18n delivery" },
+  { value: "30", suffix: "~", label: "Languages localized", sub: "Built for a global audience" },
 ];
 
 export const careerHighlights: { title: string; description: string; icon: string }[] = [
   {
-    title: "Owned a custom HLS video player end-to-end",
+    title: "Built a custom HLS video player, start to finish",
     description:
-      "Designed and shipped the playback engine — adaptive streaming, scrubbing previews, resume, and live chat — that powers the flagship streaming product.",
+      "Designed and shipped the video player — adaptive streaming, scrubbing previews, resume, and live chat — that powers the main streaming product.",
     icon: "PlayCircle",
   },
   {
-    title: "Set the frontend standard for a platform suite",
+    title: "Set the frontend standard for the whole platform",
     description:
-      "Established the React/Next.js patterns and shared architecture the team reuses to launch new white-label streaming brands.",
+      "Built the React/Next.js patterns and shared structure the team reuses to launch new branded streaming products.",
     icon: "Layers",
   },
   {
-    title: "Shipped on the bleeding edge in production",
+    title: "Adopted the newest stack, ahead of most teams",
     description:
-      "Took Next.js 16, React 19, Apollo 4 and next-auth 5 to production — staying ahead of the ecosystem without sacrificing stability.",
+      "Took Next.js 16, React 19, Apollo 4 and next-auth 5 to production early, without breaking things.",
     icon: "Rocket",
   },
   {
     title: "Delivered global, accessible products",
     description:
-      "Localized products into ~30 languages and shipped accessible, themeable, offline-capable experiences.",
+      "Localized products into ~30 languages and shipped accessible apps that work offline and support light/dark themes.",
     icon: "Globe",
   },
 ];

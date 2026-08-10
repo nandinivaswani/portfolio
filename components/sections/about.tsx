@@ -30,15 +30,15 @@ export function About() {
               </p>
               <p>
                 I&apos;m happy to own the parts most engineers avoid. That&apos;s meant building a{" "}
-                <strong className="text-fg">custom HLS video player</strong> from primitives, but
-                also a ~30-language SaaS, a type-safe GraphQL data layer for an AI tool, an
-                editorial CMS, and reusable component systems that whole teams build on.
+                <strong className="text-fg">custom HLS video player</strong> from scratch, but also
+                a ~30-language SaaS, a type-safe GraphQL data layer for an AI tool, an editorial
+                CMS, and reusable components that whole teams build on.
               </p>
               <p>
                 What ties it together is how I work: I care about the things that don&apos;t show up
                 in a demo but decide whether a product is good — performance under real traffic,
-                accessibility, internationalization, and clean architecture other engineers can
-                extend.
+                accessibility, support for many languages, and a clean structure other engineers can
+                build on.
               </p>
             </div>
           </div>

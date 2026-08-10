@@ -3,6 +3,7 @@
 import { motion, useInView, useReducedMotion } from "motion/react";
 import { useRef, useState, useEffect } from "react";
 import { skillGroups, languages, softSkills } from "@/content/skills";
+import { site } from "@/content/site";
 import { Icon } from "@/components/ui/icon";
 import { GridField, SectionGlow } from "@/components/section-fx";
 import { RevealHeading, TiltCard } from "@/components/motion-fx";
@@ -83,9 +84,9 @@ function NpmInstall() {
         <span className="h-2 w-2 rounded-full bg-red-500/50" />
         <span className="h-2 w-2 rounded-full bg-yellow-500/50" />
         <span className="h-2 w-2 rounded-full bg-green-500/50" />
-        <span className="text-fg-subtle ml-3 font-mono text-[10px]">terminal</span>
+        <span className="text-fg-subtle ml-3 font-mono text-[12px]">stack.sh</span>
       </div>
-      <div className="p-4 font-mono text-[11px] leading-5">
+      <div className="p-4 font-mono text-[13px] leading-5">
         <div className="text-fg/60 mb-2">
           $ pnpm add @nandini/frontend-stack
           <span className="cursor-blink text-accent ml-0.5">▊</span>
@@ -107,7 +108,7 @@ function NpmInstall() {
             animate={{ opacity: 1 }}
             className="text-accent mt-2"
           >
-            ✓ added {npmPackages.length} packages in 0.8s
+            ✓ added {npmPackages.length} packages in {site.yearsExperience} years
           </motion.div>
         )}
       </div>
@@ -138,8 +139,8 @@ export function Skills() {
               </h2>
             </RevealHeading>
             <p className="text-fg-muted mt-4 max-w-sm text-sm">
-              4.5+ years across streaming, SaaS, AI and CMS — one philosophy: every technical choice
-              should make the experience better.
+              4.5+ years across streaming, SaaS, AI and CMS. Different domains, same rule: reach for
+              the tool that makes the product faster or simpler — not the trendiest one.
             </p>
           </div>
           <NpmInstall />
@@ -168,7 +169,7 @@ export function Skills() {
                     </span>
                     <div className="min-w-0">
                       <h3 className="font-display text-fg truncate text-sm font-bold">{g.title}</h3>
-                      <span className="text-fg-subtle font-mono text-[10px] tracking-wider uppercase">
+                      <span className="text-fg-subtle font-mono text-[12px] tracking-wider uppercase">
                         {g.skills.length} tools
                       </span>
                     </div>
@@ -183,7 +184,7 @@ export function Skills() {
                         viewport={{ once: true }}
                         transition={{ duration: 0.28, delay: i * 0.08 + j * 0.04 + 0.1 }}
                         whileHover={{ scale: 1.06 }}
-                        className="border-border bg-secondary/40 text-fg/90 hover:border-accent/60 hover:text-accent cursor-default rounded-md border px-2.5 py-1 font-mono text-[11px] transition-colors duration-200"
+                        className="border-border bg-secondary/40 text-fg/90 hover:border-accent/60 hover:text-accent cursor-default rounded-md border px-2.5 py-1 font-mono text-[13px] transition-colors duration-200"
                       >
                         {s.name}
                       </motion.li>
@@ -215,7 +216,7 @@ export function Skills() {
                   <span className="font-display text-fg text-base font-semibold">{lang.name}</span>
                   <div className="flex items-center gap-4">
                     <FluencyMeter level={lang.level} index={i} />
-                    <span className="text-fg-muted w-24 text-right font-mono text-[11px] tracking-wider uppercase">
+                    <span className="text-fg-muted w-24 text-right font-mono text-[13px] tracking-wider uppercase">
                       {lang.level}
                     </span>
                   </div>

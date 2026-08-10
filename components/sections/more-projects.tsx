@@ -35,7 +35,7 @@ export function MoreProjects() {
                   {p.tags.map((t) => (
                     <span
                       key={t}
-                      className="border-border bg-surface-2 text-fg-subtle rounded-md border px-2 py-0.5 text-[11px] font-medium"
+                      className="border-border bg-surface-2 text-fg-subtle rounded-md border px-2 py-0.5 text-[13px] font-medium"
                     >
                       {t}
                     </span>

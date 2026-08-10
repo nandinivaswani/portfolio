@@ -2,7 +2,6 @@
 
 import { motion, useScroll, useTransform, useMotionTemplate } from "motion/react";
 import { useRef } from "react";
-import { site } from "@/content/site";
 import { SectionGlow } from "@/components/section-fx";
 import { CircuitField } from "@/components/section-bg";
 import { RevealHeading } from "@/components/motion-fx";
@@ -24,7 +23,7 @@ const impacts = [
   },
   {
     stat: "~30",
-    label: "languages, one product that never breaks",
+    label: "languages, same product, no broken layouts",
     body: "Supporting a global audience means every layout, direction, and edge case has to hold up in someone else's language — not just yours. I've shipped that at scale, RTL included.",
     index: "03",
   },
@@ -89,7 +88,7 @@ export function WhyFE() {
                 Frontend isn&apos;t the last mile.
                 <br />
                 <span className="text-fg-muted font-light italic">
-                  It&apos;s the only mile users ever see.
+                  It&apos;s the mile users actually see.
                 </span>
               </h2>
             </RevealHeading>
@@ -111,7 +110,7 @@ export function WhyFE() {
               transition={{ delay: i * 0.1, duration: 0.6, ease }}
               className="hover:bg-card p-8 transition-colors duration-300"
             >
-              <p className="text-fg-subtle mb-6 font-mono text-[10px] tracking-widest">
+              <p className="text-fg-subtle mb-6 font-mono text-[12px] tracking-widest">
                 {item.index}
               </p>
               <p className="text-accent mb-3 text-5xl leading-none font-black md:text-6xl">
@@ -125,9 +124,9 @@ export function WhyFE() {
           ))}
         </div>
 
-        {/* Code + quote strip */}
+        {/* Code diff + closing statement */}
         <div className="border-border grid grid-cols-1 border-b lg:grid-cols-2">
-          {/* Performance code snippet */}
+          {/* Tool vs. product decision, as a diff */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -135,54 +134,37 @@ export function WhyFE() {
             transition={{ duration: 0.6, ease }}
             className="border-border p-8 lg:border-r"
           >
-            <p className="text-accent/70 mb-4 font-mono text-[10px] tracking-widest uppercase">
-              {"// resume-where-you-left-off"}
+            <p className="text-accent/70 mb-4 font-mono text-[12px] tracking-widest uppercase">
+              {"// the decision that makes it a product"}
             </p>
             <div className="border-border bg-card/60 overflow-hidden rounded-lg border">
               <div className="border-border bg-bg/40 flex items-center gap-2 border-b px-4 py-2.5">
                 <span className="h-2 w-2 rounded-full bg-red-500/60" />
                 <span className="h-2 w-2 rounded-full bg-yellow-500/60" />
                 <span className="h-2 w-2 rounded-full bg-green-500/60" />
-                <span className="text-fg-subtle ml-3 font-mono text-[10px]">player.ts</span>
+                <span className="text-fg-subtle ml-3 font-mono text-[12px]">player.tsx</span>
               </div>
-              <pre className="overflow-x-auto p-5 font-mono text-[12px] leading-6">
+              <pre className="overflow-x-auto p-5 font-mono text-[14px] leading-6">
                 <code>
-                  <span className="code-comment">
-                    {"// persist watch-time, throttled to the cache"}
+                  <span className="code-comment">{"// same bug, two ways to handle it"}</span>
+                  {"\n\n"}
+                  <span className="text-red-400">{"- catch (e) { console.error(e); }"}</span>
+                  {"\n"}
+                  <span className="text-emerald-400">{"+ catch (e) {"}</span>
+                  {"\n"}
+                  <span className="text-emerald-400">
+                    {'+   setError("Couldn\'t load this — try again");'}
                   </span>
                   {"\n"}
-                  <span className="code-function">video</span>
-                  <span className="text-fg-muted">.</span>
-                  <span className="code-function">on</span>
-                  <span className="text-fg-muted">(</span>
-                  <span className="code-string">&quot;timeupdate&quot;</span>
-                  <span className="text-fg-muted">, </span>
-                  <span className="code-keyword">throttle</span>
-                  <span className="text-fg-muted">{"(() => {"}</span>
-                  {"\n"}
-                  <span className="text-fg-muted">{"  "}</span>
-                  <span className="code-function">apollo</span>
-                  <span className="text-fg-muted">.</span>
-                  <span className="code-function">writeFragment</span>
-                  <span className="text-fg-muted">{"({"}</span>
-                  {"\n"}
-                  <span className="text-fg-muted">{"    id, data: { position: video."}</span>
-                  <span className="code-function">currentTime</span>
-                  <span className="text-fg-muted">{" },"}</span>
-                  {"\n"}
-                  <span className="text-fg-muted">{"  });"}</span>
-                  {"\n"}
-                  <span className="text-fg-muted">{"}, "}</span>
-                  <span className="code-number">2000</span>
-                  <span className="text-fg-muted">{"));"}</span>
-                  {"\n"}
-                  <span className="code-comment">{"\n// → resumes instantly on any device"}</span>
+                  <span className="text-emerald-400">{"+ }"}</span>
+                  {"\n\n"}
+                  <span className="code-comment">{"// same crash, one leaves the user stuck"}</span>
                 </code>
               </pre>
             </div>
           </motion.div>
 
-          {/* Pull quote */}
+          {/* Closing statement */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -191,11 +173,10 @@ export function WhyFE() {
             className="flex flex-col justify-center p-8 lg:p-16"
           >
             <p className="text-fg text-2xl leading-relaxed font-medium md:text-3xl">
-              &ldquo;The gap between a <span className="text-accent font-bold">tool</span> and a{" "}
+              The difference between a <span className="text-accent font-bold">tool</span> and a{" "}
               <span className="text-accent font-bold">product </span>
-              is made entirely of frontend engineering decisions.&rdquo;
+              usually comes down to frontend engineering decisions.
             </p>
-            <p className="text-fg-muted mt-6 font-mono text-sm">— {site.name}</p>
           </motion.div>
         </div>
       </div>

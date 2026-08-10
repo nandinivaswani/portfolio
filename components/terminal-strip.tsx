@@ -54,11 +54,11 @@ export function TerminalStrip() {
           <span className="h-2.5 w-2.5 rounded-full bg-red-500/60" />
           <span className="h-2.5 w-2.5 rounded-full bg-yellow-500/60" />
           <span className="h-2.5 w-2.5 rounded-full bg-green-500/60" />
-          <span className="text-fg-subtle ml-4 font-mono text-[11px]">
+          <span className="text-fg-subtle ml-4 font-mono text-[13px]">
             nandini@studio — zsh — 120×32
           </span>
         </div>
-        <span className="text-accent/70 font-mono text-[10px] tracking-widest uppercase">
+        <span className="text-accent/70 font-mono text-[12px] tracking-widest uppercase">
           Build Output
         </span>
       </div>
@@ -69,7 +69,7 @@ export function TerminalStrip() {
           {buildLines.map((line, i) => (
             <div
               key={i}
-              className={`font-mono text-[12px] leading-5 transition-opacity duration-150 ${shown.includes(i) ? "opacity-100" : "opacity-0"} ${line.color}`}
+              className={`font-mono text-[14px] leading-5 transition-opacity duration-150 ${shown.includes(i) ? "opacity-100" : "opacity-0"} ${line.color}`}
             >
               {line.text}
               {shown.includes(i) && i === shown[shown.length - 1] && i < buildLines.length - 1 && (

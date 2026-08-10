@@ -10,7 +10,7 @@ export const resume = {
     { label: "GitHub", href: "github.com/nandinivaswani" },
   ],
   summary:
-    "Senior Frontend Engineer with 4.5+ years building production React & Next.js applications, specializing in OTT/video-streaming platforms. I architect custom HLS video players, GraphQL data layers, subscription experiences, and white-label multi-tenant frontends — with a strong focus on performance, accessibility, and internationalization. I began my career with hands-on AI/ML experience, which continues to inform my work on AI-assisted products.",
+    "Senior Frontend Engineer with 4.5+ years building production React & Next.js applications, focused on OTT/video-streaming platforms. I build custom HLS video players, GraphQL data layers, subscription experiences, and white-label multi-tenant frontends — with a strong focus on performance, accessibility, and multi-language support. I began my career with hands-on AI/ML experience, which still shapes how I build AI-assisted products.",
   // ATS-friendly: a flat, scannable skills list grouped by area
   skills: [
     {
@@ -72,11 +72,11 @@ export const resume = {
       location: "Surat, India",
       period: "2023 — Present",
       bullets: [
-        "Architected and shipped a fully custom HLS video player (adaptive bitrate streaming, storyboard scrubbing previews, resume-where-you-left-off, live chat over playback) powering the company's flagship OTT streaming platform.",
-        "Built subscription and paywall flows with Stripe, and instrumented playback analytics with Matomo to drive product and content decisions.",
-        "Led adoption of a modern production stack — Next.js 16, React 19, Apollo Client 4, next-auth 5 — and established the frontend patterns reused across the platform suite.",
-        "Reused a single white-label platform engine to launch multiple branded streaming products (DailyWire, Zeale, FRC, ThinQ and more) as themed, multi-tenant deployments.",
-        "Delivered light/dark theming, full internationalization, and accessibility across media-heavy pages tuned for Core Web Vitals under spiky traffic.",
+        "Built and shipped a fully custom HLS video player (adaptive bitrate streaming, storyboard scrubbing previews, resume-where-you-left-off, live chat over playback) powering the company's main OTT streaming platform.",
+        "Built subscription and paywall flows with Stripe, and added playback analytics with Matomo to drive product and content decisions.",
+        "Brought a modern production stack into use — Next.js 16, React 19, Apollo Client 4, next-auth 5 — and set the frontend patterns reused across the platform.",
+        "Reused a single white-label platform engine to launch multiple branded streaming products (DailyWire, Zeale, FRC, ThinQ and more) as separate, branded deployments.",
+        "Delivered light/dark theming, full multi-language support, and accessibility across media-heavy pages tuned for Core Web Vitals under spiky traffic.",
       ],
     },
     {
@@ -85,10 +85,10 @@ export const resume = {
       location: "Surat, India",
       period: "Aug 2021 — 2023",
       bullets: [
-        "Delivered 8+ production web applications across varied stacks (Next.js, MobX, Ant Design) with a focus on performance and data-layer efficiency.",
+        "Delivered 8+ production web applications across varied stacks (Next.js, MobX, Ant Design) with a focus on performance and faster data loading.",
         "Reduced network round-trips and improved load times by caching data with Apollo Client and React lazy queries.",
         "Owned the frontend of CardZap, a digital business-card SaaS: localized into ~30 languages with i18next and shipped as an offline-capable PWA.",
-        "Implemented Firebase authentication with a single-login, dual-session cookie strategy, plus role-based access management across multiple apps.",
+        "Added Firebase authentication with a single-login, dual-session cookie strategy, plus role-based access control across multiple apps.",
       ],
     },
     {

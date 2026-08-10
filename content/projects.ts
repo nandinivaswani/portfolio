@@ -32,15 +32,15 @@ export const projects: Project[] = [
       "The latest OTT product I led — a Netflix-style streaming experience where members watch on-demand and live video, follow creators, join communities, and pay via subscriptions or donations. Built on the very latest stack (Next.js 16, React 19, Apollo 4), I owned the video experience and the custom player from the ground up.",
     highlights: [
       "Built a fully custom HLS video player — adaptive bitrate streaming, storyboard scrubbing previews, resume-where-you-left-off, and live chat over playback.",
-      "Implemented subscription & paywall gating with Stripe, so premium content unlocks seamlessly per membership tier.",
-      "Instrumented playback analytics (Matomo) — watch-time, completion and engagement events feeding product decisions.",
-      "Localized the platform with next-intl and shipped polished light & dark themes.",
+      "Added subscription and paywall plans with Stripe, so members unlock content based on their plan.",
+      "Added playback analytics with Matomo — watch-time, completion and engagement data that feeds product decisions.",
+      "Translated the platform with next-intl and shipped clean light and dark themes.",
     ],
     engineering: [
       "Custom player built on hls.js with a React context state machine driving play/seek/quality/fullscreen — including iOS-specific native-playback fallbacks.",
       "Throttled watch-time persistence to GraphQL (Apollo) with optimistic cache fragments, so progress resumes instantly across devices.",
       "Storyboard sprite generation + scrubbing preview thumbnails on the seek bar (Netflix-style).",
-      "Cutting-edge stack: Next.js 16 App Router, React 19, Apollo Client 4, next-auth 5.",
+      "Built on the newest stable stack: Next.js 16 App Router, React 19, Apollo Client 4, next-auth 5.",
     ],
     stack: [
       "Next.js 16",
@@ -70,13 +70,13 @@ export const projects: Project[] = [
     year: "2026 · Current",
     featured: true,
     tagline:
-      "My current project — a nationally-recognized campaign site engineered for traffic spikes and motion.",
+      "My current project — a national ad-campaign site built for heavy traffic spikes and scroll-driven motion.",
     summary:
-      "The project I'm building right now — frontend for a nationally-known brand campaign. A content-rich, animation-forward marketing platform engineered to stay fast and resilient under large, spiky traffic.",
+      "The project I'm building right now — frontend for a national brand campaign. A content-heavy, animated marketing site built to stay fast under large, spiky traffic.",
     highlights: [
-      "Built an animation-forward experience with GSAP and scroll-driven storytelling.",
-      "Engineered for performance under heavy, spiky campaign traffic with the latest Next.js & React.",
-      "Integrated rich media playback and intersection-observer-driven reveals throughout.",
+      "Built an animated experience with GSAP and scroll-driven storytelling.",
+      "Built for performance under heavy, spiky campaign traffic with the latest Next.js & React.",
+      "Added rich media playback and scroll-triggered animations throughout.",
     ],
     engineering: [
       "Next.js 15 + React 19 with Tailwind v4 for a lean, modern styling pipeline.",
@@ -85,7 +85,7 @@ export const projects: Project[] = [
     ],
     stack: ["Next.js 15", "React 19", "TypeScript", "GSAP", "Tailwind v4", "react-player"],
     metrics: [
-      { value: "National", label: "Recognized brand campaign" },
+      { value: "National", label: "Brand campaign, high traffic" },
       { value: "GSAP", label: "Scroll-driven motion" },
       { value: "CWV", label: "Performance-tuned" },
     ],
@@ -104,7 +104,7 @@ export const projects: Project[] = [
       "Product-ownership frontend for a SaaS that turns contact details into shareable, scannable digital cards — built for a global audience with ~30 language locales, Firebase auth, and offline-capable PWA delivery.",
     highlights: [
       "Localized the entire product into ~30 languages with i18next, including RTL-aware layouts.",
-      "Implemented Firebase authentication with a dual-session (one-login, two-session) cookie strategy.",
+      "Built Firebase login with a dual-session (one-login, two-session) cookie setup.",
       "Shipped a PWA with offline support, plus Sentry monitoring and reCAPTCHA protection.",
     ],
     engineering: [

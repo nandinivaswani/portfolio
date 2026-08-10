@@ -1,13 +1,13 @@
 "use client";
 
-import { motion, AnimatePresence, useScroll, useTransform, useReducedMotion } from "motion/react";
-import { useRef, useState, useEffect, type PointerEvent } from "react";
-import { Plus } from "lucide-react";
+import { motion, AnimatePresence, useReducedMotion } from "motion/react";
+import { useState, type PointerEvent } from "react";
+import { ArrowLeft, ArrowRight, ChevronDown } from "lucide-react";
 import { featuredProjects } from "@/content/projects";
 import { moreProjects } from "@/content/more-projects";
 import { SectionGlow } from "@/components/section-fx";
 import { GitLogField } from "@/components/section-bg";
-import { RevealHeading, ScrambleText } from "@/components/motion-fx";
+import { RevealHeading, ScrambleText, TiltCard } from "@/components/motion-fx";
 import { ProjectVisual } from "@/components/project-visual";
 import { Icon } from "@/components/ui/icon";
 
@@ -15,286 +15,236 @@ const ease = [0.16, 1, 0.3, 1] as const;
 
 type FeaturedProject = (typeof featuredProjects)[number];
 
-function ProjectRow({
-  project,
-  index,
-  active = false,
-  registerRef,
+/* ── Featured work: one big case-study "hero" at a time, switched by an
+   animated tab bar (sliding pill — same idea as Motion's "smooth tabs"
+   example) instead of a scroll-position heuristic or a cramped side
+   panel. That removes the whole class of bug we kept hitting: there's
+   nothing for a click to fight, because the tabs ARE the state — and
+   the active project's name is always the biggest thing on screen, not
+   something tucked in a rail you can scroll past and lose track of. */
+
+function FeaturedTabs({
+  activeIndex,
+  onSelect,
 }: {
-  project: FeaturedProject;
-  index: number;
-  active?: boolean;
-  registerRef?: (el: HTMLDivElement | null) => void;
+  activeIndex: number;
+  onSelect: (i: number) => void;
 }) {
-  const ref = useRef<HTMLDivElement>(null);
+  return (
+    <div className="flex flex-1 items-center gap-2 overflow-x-auto">
+      {featuredProjects.map((p, i) => {
+        const active = i === activeIndex;
+        return (
+          <button
+            key={p.slug}
+            type="button"
+            onClick={() => onSelect(i)}
+            aria-current={active}
+            className="relative grid h-11 flex-shrink-0 place-items-center rounded-full px-4 text-sm font-medium whitespace-nowrap transition-colors"
+          >
+            {active && (
+              <motion.span
+                layoutId="featured-tab-pill"
+                className="absolute inset-0 rounded-full"
+                style={{ background: p.accent.from }}
+                transition={{ type: "spring", stiffness: 400, damping: 32 }}
+              />
+            )}
+            <span
+              className="relative z-10 flex items-center gap-2 leading-none"
+              style={{ color: active ? "#08080a" : undefined }}
+            >
+              <span
+                className={
+                  active
+                    ? "font-mono text-xs leading-none opacity-70"
+                    : "text-fg-subtle font-mono text-xs leading-none"
+                }
+              >
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <span className={active ? "leading-none" : "text-fg-muted leading-none"}>
+                {p.name.split(" — ")[0]}
+              </span>
+            </span>
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
+function FeaturedHero({ project, direction }: { project: FeaturedProject; direction: number }) {
+  const [showDetails, setShowDetails] = useState(false);
   const reduce = useReducedMotion();
-  const [open, setOpen] = useState(false);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["0 1", "0.4 1"] });
-  const opacity = useTransform(scrollYProgress, [0, 1], [0.25, 1]);
-  const x = useTransform(scrollYProgress, [0, 1], [index % 2 === 0 ? -30 : 30, 0]);
   const accent = project.accent.from;
-  const num = String(index + 1).padStart(2, "0");
-  // `open` (accordion expanded) highlights on every breakpoint; `active` (the
-  // sticky preview panel is currently showing this project) only makes sense
-  // where that panel is visible — lg and up — so it's gated accordingly.
-  const highlighted = open || active;
-  const activeOnly = active && !open;
 
   return (
     <motion.div
-      ref={(el) => {
-        ref.current = el;
-        registerRef?.(el);
-      }}
-      style={reduce ? undefined : { opacity, x }}
-      className="group border-border relative border-b"
+      custom={direction}
+      initial={reduce ? false : { opacity: 0, x: direction >= 0 ? 40 : -40 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={reduce ? undefined : { opacity: 0, x: direction >= 0 ? -40 : 40 }}
+      transition={{ duration: 0.4, ease }}
     >
-      {/* Accent bar — on only while expanded (all sizes) or the active scroll preview (lg+). No hover trigger: hover used to make a row look "active" independent of the real active state, which fought the scrollspy. */}
-      <motion.span
-        aria-hidden
-        className="pointer-events-none absolute top-0 left-0 hidden h-0.5 w-full origin-left lg:block"
-        style={{ background: accent }}
-        animate={{ scaleX: open || activeOnly ? 1 : 0 }}
-        transition={{ duration: 0.5, ease }}
-      />
-      <span
-        aria-hidden
-        className={`pointer-events-none absolute top-0 left-0 h-0.5 w-full origin-left transition-transform duration-500 ease-out lg:hidden ${open ? "scale-x-100" : "scale-x-0"}`}
-        style={{ background: accent }}
-      />
+      <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-16">
+        <TiltCard className="rounded-2xl">
+          <ProjectVisual project={project} />
+        </TiltCard>
 
-      {/* Header row — always visible */}
-      <motion.button
-        type="button"
-        onClick={() => setOpen((o) => !o)}
-        aria-expanded={open}
-        whileTap={{ scale: 0.995 }}
-        className={`flex w-full items-center gap-6 px-6 py-7 text-left transition-colors duration-300 ${open ? "bg-card" : ""} ${activeOnly ? "lg:bg-card" : ""}`}
-      >
-        <span
-          className="font-display text-fg/15 w-12 flex-shrink-0 text-3xl leading-none font-black transition-colors duration-300 md:text-4xl"
-          style={{ color: highlighted ? accent : undefined }}
-        >
-          {num}
-        </span>
-        <h3 className="font-display text-fg flex-1 text-xl font-extrabold md:text-2xl">
-          {project.name}
-        </h3>
-        <span className="text-fg-muted hidden flex-1 text-sm lg:block">{project.tagline}</span>
-        <div className="flex flex-shrink-0 items-center gap-4">
-          <span className="text-fg-muted hidden font-mono text-xs md:block">{project.year}</span>
-          <motion.div
-            whileHover={{ scale: 1.08 }}
-            whileTap={{ scale: 0.92 }}
-            animate={activeOnly ? { scale: [1, 1.08, 1] } : { scale: 1 }}
-            transition={
-              activeOnly
-                ? { duration: 1.8, repeat: Infinity, ease: "easeInOut" }
-                : { duration: 0.2 }
-            }
-            className="relative flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full border transition-colors duration-300"
-            style={
-              open
-                ? { background: accent, borderColor: accent }
-                : { borderColor: activeOnly ? accent : "var(--color-border)" }
-            }
-          >
-            {/* Radar-style pulse — invites the click while this row is the active preview */}
-            {activeOnly && (
-              <motion.span
-                aria-hidden
-                className="pointer-events-none absolute inset-0 rounded-full"
-                style={{ border: `1px solid ${accent}` }}
-                animate={{ scale: [1, 1.7], opacity: [0.6, 0] }}
-                transition={{ duration: 1.8, repeat: Infinity, ease: "easeOut" }}
-              />
-            )}
-            <motion.span
-              animate={{ rotate: open ? 45 : 0 }}
-              transition={{ duration: 0.25 }}
-              className="flex items-center justify-center"
-              style={{ color: open ? "#08080a" : activeOnly ? accent : undefined }}
+        <div className="flex flex-col justify-center gap-6">
+          <div>
+            <p
+              className="font-mono text-[12px] tracking-[0.15em] uppercase"
+              style={{ color: accent }}
             >
-              <Plus size={16} strokeWidth={2.25} />
-            </motion.span>
-          </motion.div>
-        </div>
-      </motion.button>
+              {project.category}
+            </p>
+            <h3 className="font-display text-fg mt-2 text-3xl font-extrabold tracking-tight md:text-4xl">
+              {project.name}
+            </h3>
+            <p className="text-fg-muted mt-3 text-base leading-relaxed">{project.summary}</p>
+          </div>
 
-      {/* Expanded case study */}
+          <div className="flex flex-wrap gap-8">
+            {project.metrics.map((m) => (
+              <div key={m.label}>
+                <p className="font-mono text-2xl font-black" style={{ color: accent }}>
+                  {m.value}
+                </p>
+                <p className="text-fg-muted mt-1 text-sm">{m.label}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="flex flex-wrap gap-2">
+            {project.stack.map((t) => (
+              <span
+                key={t}
+                className="border-border text-fg-muted rounded-full border px-3 py-1.5 font-mono text-sm"
+              >
+                {t}
+              </span>
+            ))}
+          </div>
+
+          <button
+            type="button"
+            onClick={() => setShowDetails((v) => !v)}
+            aria-expanded={showDetails}
+            className="text-fg hover:text-accent inline-flex items-center gap-2 self-start text-sm font-semibold transition-colors"
+          >
+            {showDetails ? "Hide" : "View"} the engineering details
+            <motion.span
+              animate={{ rotate: showDetails ? 180 : 0 }}
+              transition={{ duration: 0.25 }}
+              className="flex"
+            >
+              <ChevronDown size={16} />
+            </motion.span>
+          </button>
+        </div>
+      </div>
+
       <motion.div
         initial={false}
-        animate={{ height: open ? "auto" : 0, opacity: open ? 1 : 0 }}
+        animate={{ height: showDetails ? "auto" : 0, opacity: showDetails ? 1 : 0 }}
         transition={{ duration: 0.4, ease }}
         className="overflow-hidden"
       >
-        <div className="border-border grid grid-cols-1 gap-8 border-t px-6 pt-6 pb-8 md:grid-cols-12">
-          {/* Left: narrative */}
-          <div className="grid grid-cols-1 gap-6 md:col-span-7">
-            <div>
-              <p
-                className="mb-2 font-mono text-[10px] tracking-[0.15em] uppercase"
-                style={{ color: accent }}
-              >
-                Overview
-              </p>
-              <p className="text-fg-muted text-sm leading-relaxed">{project.summary}</p>
-            </div>
-            <div>
-              <p
-                className="mb-2 font-mono text-[10px] tracking-[0.15em] uppercase"
-                style={{ color: accent }}
-              >
-                Engineering
-              </p>
-              <ul className="flex flex-col gap-2.5">
-                {project.engineering.map((e) => (
-                  <li
-                    key={e}
-                    className="text-fg-muted flex items-start gap-3 text-sm leading-relaxed"
-                  >
-                    <span
-                      className="mt-2 h-1 w-1 flex-shrink-0 rounded-full"
-                      style={{ background: accent }}
-                    />
-                    {e}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          {/* Right: visual + metrics + tech + role */}
-          <div className="flex flex-col gap-8 md:col-span-5">
-            <motion.div
-              initial={{ opacity: 0, y: 16, scale: 0.97 }}
-              animate={open ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 16, scale: 0.97 }}
-              transition={{ duration: 0.5, delay: open ? 0.15 : 0, ease }}
+        <div className="border-border mt-10 grid grid-cols-1 gap-10 border-t pt-10 md:grid-cols-2">
+          <div>
+            <p
+              className="mb-3 font-mono text-[12px] tracking-[0.15em] uppercase"
+              style={{ color: accent }}
             >
-              <ProjectVisual project={project} />
-            </motion.div>
-            <div className="flex flex-wrap gap-6">
-              {project.metrics.map((m) => (
-                <div key={m.label}>
-                  <p className="font-mono text-2xl font-black" style={{ color: accent }}>
-                    {m.value}
-                  </p>
-                  <p className="text-fg-muted mt-1 text-xs">{m.label}</p>
-                </div>
-              ))}
-            </div>
-            <div className="flex flex-wrap gap-2">
-              {project.stack.map((t) => (
-                <span
-                  key={t}
-                  className="border-border text-fg-muted hover:border-fg/30 rounded-full border px-3 py-1.5 font-mono text-xs transition-colors"
+              Impact
+            </p>
+            <ul className="flex flex-col gap-2.5">
+              {project.highlights.map((h) => (
+                <li
+                  key={h}
+                  className="text-fg-muted flex items-start gap-3 text-sm leading-relaxed"
                 >
-                  {t}
-                </span>
+                  <span
+                    className="mt-2 h-1 w-1 flex-shrink-0 rounded-full"
+                    style={{ background: accent }}
+                  />
+                  {h}
+                </li>
               ))}
-            </div>
-            <p className="text-fg-subtle font-mono text-xs">{project.role}</p>
+            </ul>
+          </div>
+          <div>
+            <p
+              className="mb-3 font-mono text-[12px] tracking-[0.15em] uppercase"
+              style={{ color: accent }}
+            >
+              Engineering
+            </p>
+            <ul className="flex flex-col gap-2.5">
+              {project.engineering.map((e) => (
+                <li
+                  key={e}
+                  className="text-fg-muted flex items-start gap-3 text-sm leading-relaxed"
+                >
+                  <span
+                    className="mt-2 h-1 w-1 flex-shrink-0 rounded-full"
+                    style={{ background: accent }}
+                  />
+                  {e}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
+        <p className="text-fg-subtle mt-6 font-mono text-sm">{project.role}</p>
       </motion.div>
     </motion.div>
   );
 }
 
-/* ── Featured list + sticky live-preview panel (desktop) ─────
-   A scrollspy — not hover — drives the active project: whichever
-   row is crossing a thin band near the vertical center of the
-   viewport becomes active, so scrolling down/up naturally advances
-   the sticky preview beside the list, like paging through a case
-   study. Falls back to the plain list + click-to-expand on touch/
-   smaller screens, where the panel isn't shown anyway. */
 function FeaturedWork() {
-  const [previewSlug, setPreviewSlug] = useState(featuredProjects[0]?.slug);
-  const previewProject =
-    featuredProjects.find((p) => p.slug === previewSlug) ?? featuredProjects[0];
-  const rowRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [index, setIndex] = useState(0);
+  const [direction, setDirection] = useState(0);
+  const project = featuredProjects[index];
 
-  useEffect(() => {
-    const rows = rowRefs.current;
-    // A fixed line near the top of the viewport (just under the fixed nav) —
-    // the active project is whichever row's top has most recently scrolled
-    // past it, same technique docs sites use for sidebar TOC highlighting.
-    // This is what a viewport-*center* band got wrong: landing on the
-    // section from a nav click puts the header (not row 1) at the center,
-    // so "closest to center" could pick row 2 depending on header height.
-    // A fixed top line has no such dependency — with nothing scrolled past
-    // it yet, it correctly defaults to row 1.
-    const ACTIVATION_LINE = 160;
-    let rafId: number | null = null;
-
-    const update = () => {
-      rafId = null;
-      let activeIdx = 0;
-      for (let i = 0; i < rows.length; i++) {
-        const top = rows[i]?.getBoundingClientRect().top;
-        if (top !== undefined && top <= ACTIVATION_LINE) activeIdx = i;
-      }
-      setPreviewSlug(featuredProjects[activeIdx].slug);
-    };
-    const onScroll = () => {
-      if (rafId === null) rafId = requestAnimationFrame(update);
-    };
-
-    window.addEventListener("scroll", onScroll, { passive: true });
-    update();
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      if (rafId !== null) cancelAnimationFrame(rafId);
-    };
-  }, []);
+  const go = (i: number) => {
+    setDirection(i > index ? 1 : i < index ? -1 : 0);
+    setIndex(i);
+  };
 
   return (
-    <div className="lg:grid lg:grid-cols-[1fr_360px] lg:items-start lg:gap-12">
-      <div>
-        {featuredProjects.map((p, i) => (
-          <ProjectRow
-            key={p.slug}
-            project={p}
-            index={i}
-            active={p.slug === previewSlug}
-            registerRef={(el) => {
-              rowRefs.current[i] = el;
-            }}
-          />
-        ))}
+    <div className="px-6">
+      <div className="border-border flex flex-wrap items-center justify-between gap-4 border-b py-8">
+        <FeaturedTabs activeIndex={index} onSelect={go} />
+        <div className="flex flex-shrink-0 items-center gap-3">
+          <motion.button
+            type="button"
+            aria-label="Previous project"
+            whileHover={{ scale: 1.08 }}
+            whileTap={{ scale: 0.92 }}
+            onClick={() => go((index - 1 + featuredProjects.length) % featuredProjects.length)}
+            className="border-border bg-card text-fg hover:border-accent hover:bg-accent-soft hover:text-accent grid h-11 w-11 place-items-center rounded-full border-2 transition-colors"
+          >
+            <ArrowLeft size={18} strokeWidth={2.25} />
+          </motion.button>
+          <motion.button
+            type="button"
+            aria-label="Next project"
+            whileHover={{ scale: 1.08 }}
+            whileTap={{ scale: 0.92 }}
+            onClick={() => go((index + 1) % featuredProjects.length)}
+            className="border-border bg-card text-fg hover:border-accent hover:bg-accent-soft hover:text-accent grid h-11 w-11 place-items-center rounded-full border-2 transition-colors"
+          >
+            <ArrowRight size={18} strokeWidth={2.25} />
+          </motion.button>
+        </div>
       </div>
 
-      <div className="hidden lg:sticky lg:top-28 lg:block">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={previewProject.slug}
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -14 }}
-            transition={{ duration: 0.35, ease }}
-          >
-            <ProjectVisual project={previewProject} />
-            <div className="mt-6">
-              <p
-                className="font-mono text-[10px] tracking-[0.15em] uppercase"
-                style={{ color: previewProject.accent.from }}
-              >
-                {previewProject.category}
-              </p>
-              <h4 className="font-display text-fg mt-2 text-xl font-bold">{previewProject.name}</h4>
-              <p className="text-fg-muted mt-2 text-sm leading-relaxed">{previewProject.tagline}</p>
-              <div className="mt-4 flex flex-wrap gap-2">
-                {previewProject.stack.slice(0, 5).map((t) => (
-                  <span
-                    key={t}
-                    className="border-border text-fg-muted rounded-full border px-2.5 py-1 font-mono text-[10px]"
-                  >
-                    {t}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </motion.div>
+      <div className="overflow-hidden py-10">
+        <AnimatePresence mode="wait" custom={direction}>
+          <FeaturedHero key={project.slug} project={project} direction={direction} />
         </AnimatePresence>
       </div>
     </div>
@@ -381,12 +331,12 @@ function WorkRow({
               <ScrambleText word={project.name} />
             </h4>
             {featured && (
-              <span className="border-accent/40 text-accent rounded-full border px-2 py-0.5 font-mono text-[9px] tracking-wider uppercase">
+              <span className="border-accent/40 text-accent rounded-full border px-2 py-0.5 font-mono text-[11px] tracking-wider uppercase">
                 Featured
               </span>
             )}
           </div>
-          <p className="text-fg-subtle mt-1.5 flex items-center gap-1.5 font-mono text-[11px] tracking-wider uppercase">
+          <p className="text-fg-subtle mt-1.5 flex items-center gap-1.5 font-mono text-[13px] tracking-wider uppercase">
             <Icon name={icon} className="h-3 w-3" style={{ color }} />
             {project.category}
           </p>
@@ -400,7 +350,7 @@ function WorkRow({
           {project.tags.map((t) => (
             <span
               key={t}
-              className="border-border/80 text-fg-subtle group-hover:border-accent/30 group-hover:text-fg-muted rounded border px-2 py-0.5 font-mono text-[10px] transition-colors"
+              className="border-border/80 text-fg-subtle group-hover:border-accent/30 group-hover:text-fg-muted rounded border px-2 py-0.5 font-mono text-[12px] transition-colors"
             >
               {t}
             </span>
@@ -478,7 +428,7 @@ function MoreWork() {
           {"// More work"}
         </p>
         <span className="bg-border h-px flex-1" />
-        <span className="text-fg-subtle font-mono text-[10px]">{moreProjects.length} projects</span>
+        <span className="text-fg-subtle font-mono text-[12px]">{moreProjects.length} projects</span>
       </div>
       <ul>
         {orderedMore.map((m, i) => (
@@ -517,11 +467,11 @@ export function Projects() {
             </RevealHeading>
           </div>
           <p className="text-fg-muted hidden max-w-xs text-right text-sm lg:block">
-            Scroll to preview a project. Click to expand the full case study.
+            Switch projects with the tabs below.
           </p>
         </div>
 
-        {/* Featured project rows + sticky live preview */}
+        {/* Featured work — one case study at a time, tab-driven */}
         <FeaturedWork />
 
         {/* More work — scroll-driven index + preview */}

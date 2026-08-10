@@ -151,9 +151,9 @@ function TypedCode() {
         <span className="h-2.5 w-2.5 rounded-full bg-red-500/70" />
         <span className="h-2.5 w-2.5 rounded-full bg-yellow-500/70" />
         <span className="h-2.5 w-2.5 rounded-full bg-green-500/70" />
-        <span className="text-fg-subtle ml-3 font-mono text-[10px]">nandini.ts</span>
+        <span className="text-fg-subtle ml-3 font-mono text-[12px]">nandini.ts</span>
       </div>
-      <div className="min-h-[168px] p-4 text-[12px] leading-6">
+      <div className="min-h-[168px] p-4 text-[14px] leading-6">
         {codeLines.map((line, li) => (
           <AnimatePresence key={li}>
             {li < visibleLines && (
@@ -163,7 +163,7 @@ function TypedCode() {
                 transition={{ duration: 0.2 }}
                 className="flex items-start"
               >
-                <span className="text-fg-subtle/60 mr-4 w-6 flex-shrink-0 text-right font-mono text-[10px] leading-6 select-none">
+                <span className="text-fg-subtle/60 mr-4 w-6 flex-shrink-0 text-right font-mono text-[12px] leading-6 select-none">
                   {li + 1}
                 </span>
                 <span className="font-mono">
@@ -187,7 +187,7 @@ function TypedCode() {
             className="mt-1 flex items-start"
           >
             <span className="mr-4 w-6" />
-            <span className="text-accent/70 font-mono text-[10px]">
+            <span className="text-accent/70 font-mono text-[12px]">
               ▶ Compiled in 142ms — 0 errors
             </span>
           </motion.div>
@@ -233,14 +233,14 @@ function GitTerminal() {
             transition={{ duration: 0.2 }}
             className="flex items-start gap-2"
           >
-            <span className="text-accent mt-0.5 flex-shrink-0 font-mono text-[10px]">{c.hash}</span>
-            <span className="text-fg-muted flex-1 truncate font-mono text-[10px] leading-tight">
+            <span className="text-accent mt-0.5 flex-shrink-0 font-mono text-[12px]">{c.hash}</span>
+            <span className="text-fg-muted flex-1 truncate font-mono text-[12px] leading-tight">
               {c.msg}
             </span>
           </motion.div>
         ))}
         {shown < commits.length && (
-          <span className="cursor-blink text-fg-subtle font-mono text-[10px]">█</span>
+          <span className="cursor-blink text-fg-subtle font-mono text-[12px]">█</span>
         )}
       </div>
     </div>
@@ -495,7 +495,7 @@ export function Hero() {
           transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
           className="from-fg/20 h-10 w-px bg-gradient-to-b to-transparent"
         />
-        <span className="text-fg-muted rotate-180 font-mono text-[10px] tracking-widest uppercase [writing-mode:vertical-lr]">
+        <span className="text-fg-muted rotate-180 font-mono text-[12px] tracking-widest uppercase [writing-mode:vertical-lr]">
           Scroll to explore
         </span>
       </motion.div>

@@ -40,8 +40,8 @@ export function Contact() {
             transition={{ duration: 0.7, ease }}
             className="text-fg-muted mb-6 max-w-md text-lg"
           >
-            Have a product that deserves world-class frontend engineering — streaming, SaaS or
-            something new? Let&apos;s talk.
+            Have a product that needs strong frontend engineering — streaming, SaaS or something
+            new? Let&apos;s talk.
           </motion.p>
 
           <motion.a

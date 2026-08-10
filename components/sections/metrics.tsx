@@ -61,7 +61,7 @@ export function Metrics() {
                 <Counter value={m.value} suffix={m.suffix} />
               </div>
               <p className="text-fg mt-2 text-sm font-semibold">{m.label}</p>
-              <p className="text-fg-subtle mt-0.5 text-xs">{m.sub}</p>
+              <p className="text-fg-subtle mt-0.5 text-sm">{m.sub}</p>
             </motion.div>
           ))}
         </div>

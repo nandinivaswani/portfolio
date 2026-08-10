@@ -9,33 +9,33 @@ const ease = [0.16, 1, 0.3, 1] as const;
 const beliefs = [
   {
     index: "I",
-    statement: "Performance is a feature.",
+    statement: "Speed comes first.",
     detail:
-      "Every millisecond you steal from a viewer is a millisecond of trust you lose. There is no good UX without speed.",
+      "If a video takes even one extra second to start, people leave. I build for slow networks and older phones — not just the fast Wi-Fi in the office.",
   },
   {
     index: "II",
-    statement: "Complexity should be invisible.",
+    statement: "Keep it simple to use.",
     detail:
-      "The harder the engineering problem underneath, the simpler the interface should feel on top. That tension — hard problem, easy experience — is the craft.",
+      "A seek bar, a resume button, a live chat box — three simple buttons sitting on top of a lot of hard work: streaming quality, saving your place, reconnecting when the network drops. The harder that work is, the less of it you should see.",
   },
   {
     index: "III",
-    statement: "Accessibility is not optional.",
+    statement: "Works in every language.",
     detail:
-      "An interface some people can't use isn't finished. Inclusive, localized design is simply design done correctly.",
+      "Right-to-left layouts, longer words in German, dates written differently in different countries — an English-only demo hides all of this. I build for ~30 languages from day one, not as an afterthought.",
   },
   {
     index: "IV",
-    statement: "Architecture is a force multiplier.",
+    statement: "Build once, use it everywhere.",
     detail:
-      "A clean, reusable platform engine lets one codebase launch many products. Good structure is how small teams ship big things.",
+      "One system I built now runs several branded streaming products from a single codebase. Good structure isn't about shipping faster today — it's about not rebuilding everything for the next product.",
   },
   {
     index: "V",
-    statement: "Own the entire experience.",
+    statement: "I fix it, even when I didn't break it.",
     detail:
-      "Backend latency, slow fonts, layout shift, a janky seek bar — it all reaches the user through the frontend. Own all of it.",
+      "A slow server, a late-loading font, a jumpy layout, a broken seek bar — none of it starts in my code, but all of it shows up on the user's screen. If it's visible, I fix it, no matter where the problem started.",
   },
 ];
 
@@ -72,7 +72,7 @@ export function Manifesto() {
             Principles
           </p>
           <h2 className="font-display text-4xl font-extrabold tracking-tight md:text-5xl">
-            I believe <ScrambleText word="INTERFACE" className="text-accent font-mono" /> is
+            I believe <ScrambleText word="INTERFACE" className="text-accent font-mono" auto /> is
             everything.
           </h2>
         </div>
@@ -86,7 +86,7 @@ export function Manifesto() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ delay: i * 0.1, duration: 0.6, ease }}
-              className="group border-border hover:bg-bg/50 grid grid-cols-12 items-start gap-6 border-b py-8 transition-colors"
+              className="group border-border hover:bg-bg/50 grid grid-cols-12 items-start gap-6 border-b py-9 transition-colors"
             >
               <div className="col-span-1">
                 <span className="text-fg-subtle font-mono text-xs">{b.index}</span>
@@ -97,7 +97,7 @@ export function Manifesto() {
                 </p>
               </div>
               <div className="col-span-11 col-start-2 md:col-span-6 md:col-start-auto">
-                <p className="text-fg-muted text-sm leading-relaxed">{b.detail}</p>
+                <p className="text-fg-muted text-base leading-relaxed">{b.detail}</p>
               </div>
             </motion.div>
           ))}

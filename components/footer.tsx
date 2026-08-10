@@ -78,7 +78,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="border-border text-fg-subtle mt-12 flex flex-col items-start justify-between gap-3 border-t pt-6 text-xs sm:flex-row sm:items-center">
+        <div className="border-border text-fg-subtle mt-12 flex flex-col items-start justify-between gap-3 border-t pt-6 text-sm sm:flex-row sm:items-center">
           <p>
             © {new Date().getFullYear()} {site.name}. Built with Next.js, Tailwind & Motion.
           </p>
