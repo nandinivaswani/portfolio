@@ -13,7 +13,7 @@ export const experience: Role[] = [
   {
     company: "Logicwind",
     title: "Frontend Engineer (ReactJS / Next.js)",
-    period: "Aug 2021 — Present",
+    period: "Sep 2021 — Present",
     location: "Surat, India",
     current: true,
     summary:
@@ -40,7 +40,7 @@ export const experience: Role[] = [
   {
     company: "Logicwind",
     title: "ReactJS Developer",
-    period: "Aug 2021 — 2023",
+    period: "Sep 2021 — 2023",
     location: "Surat, India",
     summary:
       "Delivered 8+ production web apps across varied stacks (Next.js, MobX, Ant Design), with a focus on performance and faster data loading.",
@@ -55,7 +55,7 @@ export const experience: Role[] = [
   {
     company: "Logicwind",
     title: "AI / ML Intern",
-    period: "Jan 2021 — Jun 2021",
+    period: "Jan 2021 — Aug 2021",
     location: "Surat, India",
     summary: "Built ML-assisted utility apps before transitioning into frontend engineering.",
     achievements: [

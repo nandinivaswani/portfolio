@@ -128,7 +128,7 @@ export const resume = {
       company: "Logicwind",
       title: "Frontend Engineer (ReactJS / Next.js)",
       location: "Surat, India",
-      period: "Aug 2021 — Present (senior-level ownership since 2024)",
+      period: "Sep 2021 — Present (senior-level ownership since 2024)",
       bullets: [
         "Built a custom HLS video player for a subscription streaming platform, with thumbnail scrubbing, resume-where-you-left-off, quality and fullscreen controls and live chat, giving viewers a YouTube-style experience.",
         "Integrated THEOplayer in additional streaming products and shared the playback patterns across client brands.",
@@ -147,7 +147,7 @@ export const resume = {
       company: "Logicwind",
       title: "AI / ML Intern",
       location: "Surat, India",
-      period: "Jan 2021 — Jun 2021",
+      period: "Jan 2021 — Aug 2021",
       bullets: [
         "Built a business card scanner that extracts text from card images and sorts it into contact fields.",
         "Built a contact merging app that finds duplicate contacts and merges the ones the user picks.",
