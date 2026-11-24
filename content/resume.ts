@@ -1,7 +1,8 @@
 // ATS resume page content. Mirrors ~/projects/resume/resume.md — keep the two in sync.
 export const resume = {
   name: "Nandini Vaswani",
-  title: "Senior Frontend Engineer | JavaScript | React | Next.js | AI-Assisted Development",
+  title:
+    "Senior Frontend Engineer | 5 Years Experience | JavaScript | React | Next.js | AI-Assisted Development",
   location: "Surat, Gujarat, India",
   email: "nandinivaswani83@gmail.com",
   phone: "+91 99257 90306",
@@ -11,7 +12,7 @@ export const resume = {
     { label: "GitHub", href: "github.com/nandinivaswani" },
   ],
   summary:
-    "Senior Frontend Engineer with 5 years of experience building production React and Next.js applications, specializing in video streaming platforms, GraphQL data layers and multi-language products. Built a custom YouTube-style HLS video player, worked with THEOplayer, and raised a streaming site's Lighthouse performance score from 36 to 80. Experienced across 10+ client products, from Next.js 16 and React 19 streaming apps to admin CMS dashboards. Uses Claude Code, Replit, v0 and Lovable to prototype and ship faster, while owning architecture, debugging and production quality.",
+    "Senior Frontend Engineer with 5 years of experience building production React and Next.js applications, specializing in video streaming platforms, GraphQL data layers and multi-language products. Built a custom YouTube-style HLS video player, worked with THEOplayer, and raised a streaming site's Lighthouse performance score from 36 to 80. Experienced across 10+ client products, from Next.js 16 and React 19 streaming apps to admin CMS dashboards. Uses Claude Code, Replit, v0 and Lovable to prototype faster.",
   skills: [
     {
       group: "Programming Languages",
@@ -112,14 +113,12 @@ export const resume = {
     {
       group: "AI Tools and AI-Assisted Development",
       items: [
-        "Claude and Claude Code",
-        "Replit and Replit Agent",
+        "Claude Code",
+        "Replit Agent",
         "v0.dev",
         "Lovable",
-        "AI-assisted coding, debugging and refactoring",
-        "AI-powered UI prototyping",
+        "AI-assisted coding and debugging",
         "Prompt engineering",
-        "Rapid application development",
       ],
     },
   ],
@@ -130,10 +129,10 @@ export const resume = {
       location: "Surat, India",
       period: "Sep 2021 — Present (senior-level ownership since 2024)",
       bullets: [
-        "Built a custom HLS video player for a subscription streaming platform, with thumbnail scrubbing, resume-where-you-left-off, quality and fullscreen controls and live chat, giving viewers a YouTube-style experience.",
-        "Integrated THEOplayer in additional streaming products and shared the playback patterns across client brands.",
-        "Raised the Lighthouse performance score of a production streaming site from 36 to 80 by profiling with Google Lighthouse and Chrome DevTools and fixing the bottlenecks they exposed.",
-        "Took Next.js 16, React 19, Apollo Client 4 and next-auth 5 into production and set the frontend patterns the team reuses across white-label streaming products.",
+        "Built a custom HLS video player for a subscription streaming platform: thumbnail scrubbing, resume, quality and fullscreen controls, live chat.",
+        "Integrated THEOplayer in additional streaming products.",
+        "Raised a streaming site's Lighthouse performance score from 36 to 80.",
+        "Used Next.js 16, React 19, Apollo Client 4 and next-auth 5 in production streaming products.",
         "Reduced network round trips by caching recent data with Apollo Client and using React lazy queries.",
         "Built subscription and paywall flows with Stripe and playback analytics with Matomo.",
         "Implemented Firebase authentication with one login across two sessions (cookie-based) and role-based access across multiple web apps.",
@@ -160,11 +159,6 @@ export const resume = {
       name: "Media Platform, subscription OTT streaming",
       detail:
         "Built the custom HLS player and the viewing experience: adaptive streaming, thumbnail scrubbing, resume and live chat. Added Stripe plans and donation flows, Matomo analytics and light and dark themes. Next.js 16, React 19, TypeScript, Apollo GraphQL, hls.js, Stripe, next-auth, Matomo.",
-    },
-    {
-      name: "Media streaming website",
-      detail:
-        "Improved the Lighthouse performance score from 36 to 80. Next.js, Apollo GraphQL, next-auth.",
     },
     {
       name: "CardZap, digital business cards",
