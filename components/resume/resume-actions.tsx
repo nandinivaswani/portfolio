@@ -23,13 +23,13 @@ export function ResumeActions() {
           >
             <Printer size={15} /> Print
           </button>
-          <button
-            type="button"
-            onClick={() => window.print()}
+          <a
+            href="/nandini-vaswani-resume.pdf"
+            download
             className={cn(buttonStyles("primary"), "px-4 py-2 text-[13px]")}
           >
             <Download size={15} /> Download PDF
-          </button>
+          </a>
         </div>
       </div>
     </div>

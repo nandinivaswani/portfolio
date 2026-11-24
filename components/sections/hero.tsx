@@ -5,6 +5,7 @@ import { useRef, useEffect, useState } from "react";
 import { site } from "@/content/site";
 import { techStack } from "@/content/skills";
 import { Magnetic } from "@/components/motion-fx";
+import { Github as GithubIcon, Linkedin as LinkedinIcon } from "@/components/ui/brand-icons";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -197,24 +198,24 @@ function TypedCode() {
   );
 }
 
-/* ── git-log terminal bento card ─────────────────────────── */
-const commits = [
-  { hash: "a4f2c1", msg: "feat: custom HLS player — storyboard scrub" },
-  { hash: "b7e930", msg: "perf: apollo cache-first, fewer round-trips" },
-  { hash: "c1d8a2", msg: "i18n: localize into ~30 locales" },
-  { hash: "f9b341", msg: "chore: ship Next.js 16 + React 19" },
+/* ── site changelog terminal bento card ───────────────────── */
+const changelog = [
+  { tag: "v1.3", msg: "Reworked Selected Work into a motion carousel" },
+  { tag: "v1.2", msg: "Rebuilt case-study visuals from real screenshots" },
+  { tag: "v1.1", msg: "Rewrote copy in plainer language, section by section" },
+  { tag: "v1.0", msg: "Launched on Next.js 16, React 19, and Motion" },
 ];
 
-function GitTerminal() {
+function SiteChangelog() {
   const reduce = useReducedMotion();
-  const [shown, setShown] = useState(reduce ? commits.length : 0);
+  const [shown, setShown] = useState(reduce ? changelog.length : 0);
   useEffect(() => {
     if (reduce) return;
     let i = 0;
     const t = setInterval(() => {
       i++;
       setShown(i);
-      if (i >= commits.length) clearInterval(t);
+      if (i >= changelog.length) clearInterval(t);
     }, 400);
     return () => clearInterval(t);
   }, [reduce]);
@@ -222,28 +223,57 @@ function GitTerminal() {
   return (
     <div className="flex h-full flex-col">
       <span className="text-fg-muted mb-3 font-mono text-xs tracking-widest uppercase">
-        git log
+        changelog
       </span>
-      <div className="flex flex-1 flex-col gap-1.5">
-        {commits.slice(0, shown).map((c) => (
+      <div className="flex flex-1 flex-col gap-2">
+        {changelog.slice(0, shown).map((c) => (
           <motion.div
-            key={c.hash}
+            key={c.tag}
             initial={reduce ? false : { opacity: 0, y: 6 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.2 }}
-            className="flex items-start gap-2"
+            className="flex items-center gap-2"
           >
-            <span className="text-accent mt-0.5 flex-shrink-0 font-mono text-[12px]">{c.hash}</span>
+            <span className="text-accent flex-shrink-0 font-mono text-[12px] leading-tight">
+              {c.tag}
+            </span>
             <span className="text-fg-muted flex-1 truncate font-mono text-[12px] leading-tight">
               {c.msg}
             </span>
           </motion.div>
         ))}
-        {shown < commits.length && (
+        {shown < changelog.length && (
           <span className="cursor-blink text-fg-subtle font-mono text-[12px]">█</span>
         )}
       </div>
     </div>
+  );
+}
+
+/* ── live local time (Surat, India) ───────────────────────── */
+function LocalClock() {
+  const [time, setTime] = useState<string | null>(null);
+
+  useEffect(() => {
+    const format = () =>
+      new Intl.DateTimeFormat("en-US", {
+        timeZone: "Asia/Kolkata",
+        hour: "numeric",
+        minute: "2-digit",
+        hour12: true,
+      }).format(new Date());
+    const raf = requestAnimationFrame(() => setTime(format()));
+    const t = setInterval(() => setTime(format()), 30_000);
+    return () => {
+      cancelAnimationFrame(raf);
+      clearInterval(t);
+    };
+  }, []);
+
+  return (
+    <span className="text-fg-subtle font-mono text-xs tabular-nums">
+      {time ?? "--:--"} IST — Surat, India
+    </span>
   );
 }
 
@@ -272,7 +302,7 @@ function bentoCards() {
             Experience
           </span>
           <div>
-            <p className="text-fg text-5xl font-black">4.5+</p>
+            <p className="text-fg text-5xl font-black">5</p>
             <p className="text-fg-muted mt-1 text-sm font-medium">years in production</p>
           </div>
         </div>
@@ -313,7 +343,7 @@ function bentoCards() {
         </div>
       ),
     },
-    { id: "git", content: <GitTerminal /> },
+    { id: "changelog", content: <SiteChangelog /> },
   ];
 }
 
@@ -382,13 +412,11 @@ export function Hero() {
       <div className="relative z-10 flex flex-1 flex-col">
         {/* Top strip */}
         <div className="border-border flex items-center justify-between border-b px-6 py-4">
-          <span className="text-fg-muted font-mono text-xs tracking-widest uppercase">
-            {site.role} · {site.specialism}
+          <span className="text-fg-muted flex items-center gap-2 font-mono text-xs tracking-widest uppercase">
+            <span className="bg-accent h-1.5 w-1.5 animate-pulse rounded-full" /> Available for new
+            roles
           </span>
-          <div className="flex items-center gap-3">
-            <span className="text-fg-subtle hidden font-mono text-xs sm:inline">~/portfolio</span>
-            <span className="text-accent font-mono text-xs">main ✓</span>
-          </div>
+          <LocalClock />
         </div>
 
         {/* Main grid */}
@@ -399,21 +427,31 @@ export function Hero() {
             className="border-border flex flex-col justify-between p-8 md:p-12 lg:border-r"
           >
             <div className="flex flex-col gap-8">
-              <motion.h1
-                initial={reduce ? false : { opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, ease, delay: 0.1 }}
-                className="font-display text-[clamp(48px,8vw,92px)] leading-[0.92] font-extrabold tracking-tight"
-              >
-                {site.firstName}
-                <br />
-                <span className="text-accent">{site.lastName}.</span>
-              </motion.h1>
+              <div>
+                <motion.p
+                  initial={reduce ? false : { opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, ease }}
+                  className="text-accent mb-3 font-mono text-sm tracking-widest uppercase"
+                >
+                  {site.role} · {site.yearsExperience} Years · {site.specialism}
+                </motion.p>
+                <motion.h1
+                  initial={reduce ? false : { opacity: 0, y: 40 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 1, ease, delay: 0.15 }}
+                  className="font-display text-[clamp(48px,8vw,92px)] leading-[0.92] font-extrabold tracking-tight"
+                >
+                  {site.firstName}
+                  <br />
+                  <span className="text-accent">{site.lastName}.</span>
+                </motion.h1>
+              </div>
 
               <motion.p
                 initial={reduce ? false : { opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, ease, delay: 0.3 }}
+                transition={{ duration: 0.8, ease, delay: 0.35 }}
                 className="text-fg-muted max-w-md text-base leading-relaxed"
               >
                 {site.tagline}
@@ -422,7 +460,7 @@ export function Hero() {
               <motion.div
                 initial={reduce ? false : { opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.5 }}
+                transition={{ duration: 0.7, delay: 0.55 }}
               >
                 <TypedCode />
               </motion.div>
@@ -432,7 +470,7 @@ export function Hero() {
               initial={reduce ? false : { opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.7 }}
-              className="mt-8 flex items-center gap-4"
+              className="mt-8 flex flex-wrap items-center gap-4"
             >
               <Magnetic>
                 <a
@@ -450,6 +488,33 @@ export function Hero() {
                   Get in Touch
                 </a>
               </Magnetic>
+              <Magnetic>
+                <a
+                  href={site.resumePdf}
+                  download
+                  className="border-border text-fg-muted hover:border-fg/30 hover:text-fg inline-flex h-12 items-center rounded-full border px-7 text-sm font-medium transition-colors"
+                >
+                  Resume (PDF)
+                </a>
+              </Magnetic>
+              <a
+                href={site.socials.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub profile"
+                className="text-fg-muted hover:text-fg transition-colors"
+              >
+                <GithubIcon size={20} />
+              </a>
+              <a
+                href={site.socials.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn profile"
+                className="text-fg-muted hover:text-fg transition-colors"
+              >
+                <LinkedinIcon size={20} />
+              </a>
             </motion.div>
           </motion.div>
 

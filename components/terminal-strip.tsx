@@ -25,7 +25,11 @@ const buildLines = [
     color: "text-fg-subtle",
   },
   { delay: 3200, text: "✓  built in 142ms", color: "text-accent" },
-  { delay: 3700, text: "$ lighthouse --url https://nandinivaswani.dev", color: "text-fg/70" },
+  {
+    delay: 3700,
+    text: "$ lighthouse --url https://nandini-vaswani.vercel.app",
+    color: "text-fg/70",
+  },
   { delay: 4200, text: "  Performance:    99  ●●●●●●●●●●", color: "text-accent" },
   { delay: 4600, text: "  Accessibility:  98  ●●●●●●●●●○", color: "text-accent" },
   { delay: 5000, text: "  Best Practices: 100 ●●●●●●●●●●", color: "text-accent" },

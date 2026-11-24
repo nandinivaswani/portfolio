@@ -2,7 +2,7 @@
 
 A premium, production-ready portfolio for a **Senior Frontend Engineer specializing in streaming & media platforms**. Built to position deep, hard-to-fake differentiators (custom HLS video players, GraphQL data layers, white-label OTT architecture) front-and-center for recruiters, hiring managers, and technical interviewers.
 
-🔗 **Live:** https://nandinivaswani.dev · **Resume:** `/resume`
+🔗 **Live:** https://nandini-vaswani.vercel.app · **Resume:** `/resume`
 
 ---
 

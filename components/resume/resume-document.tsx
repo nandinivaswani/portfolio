@@ -71,17 +71,19 @@ export function ResumeDocument() {
         </div>
       </Section>
 
-      {/* Key Projects */}
-      <Section title="Key Projects">
-        <div className="space-y-2">
-          {resume.projects.map((p) => (
-            <div key={p.name}>
-              <span className="font-semibold text-zinc-900">{p.name}.</span>{" "}
-              <span className="text-zinc-700">{p.detail}</span>
-            </div>
-          ))}
-        </div>
-      </Section>
+      {/* Key Projects (hidden when empty) */}
+      {resume.projects.length > 0 && (
+        <Section title="Key Projects">
+          <div className="space-y-2">
+            {resume.projects.map((p) => (
+              <div key={p.name}>
+                <span className="font-semibold text-zinc-900">{p.name}.</span>{" "}
+                <span className="text-zinc-700">{p.detail}</span>
+              </div>
+            ))}
+          </div>
+        </Section>
+      )}
 
       <div className="grid gap-6 sm:grid-cols-2">
         {/* Education */}

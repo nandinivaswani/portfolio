@@ -1,6 +1,5 @@
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
-import { ScrollProgress } from "@/components/scroll-progress";
 import { CursorGlow } from "@/components/cursor-glow";
 import { PageIntro } from "@/components/page-intro";
 import { Hero } from "@/components/sections/hero";
@@ -10,6 +9,7 @@ import { Manifesto } from "@/components/sections/manifesto";
 import { Projects } from "@/components/sections/projects";
 import { Experience } from "@/components/sections/experience";
 import { Skills } from "@/components/sections/skills";
+import { AiWorkflow } from "@/components/sections/ai-workflow";
 import { Contact } from "@/components/sections/contact";
 import { site } from "@/content/site";
 import { projects } from "@/content/projects";
@@ -19,7 +19,6 @@ export default function Home() {
     <>
       <PageIntro />
       <CursorGlow />
-      <ScrollProgress />
       <Nav />
       <main id="main">
         <Hero />
@@ -29,6 +28,7 @@ export default function Home() {
         <Projects />
         <Experience />
         <Skills />
+        <AiWorkflow />
         <Contact />
       </main>
       <Footer />

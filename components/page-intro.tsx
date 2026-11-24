@@ -34,9 +34,8 @@ function SplitReveal({
 
 /**
  * Full-screen name-reveal opener (adapted from the Replit design, re-themed
- * to our accent). Shown once per browser session — subsequent navigations in
- * the same session skip it so it never feels repetitive. Respects reduced
- * motion by not rendering at all.
+ * to our accent). Plays on every load. Respects reduced motion by not
+ * rendering at all.
  */
 export function PageIntro() {
   const [show, setShow] = useState(false);
@@ -44,9 +43,7 @@ export function PageIntro() {
 
   useEffect(() => {
     if (reduce) return;
-    if (sessionStorage.getItem("intro-seen")) return;
-    sessionStorage.setItem("intro-seen", "1");
-    // One-time mount check against sessionStorage (external system), not derivable during render.
+    // Runs once per mount to kick off the intro; not derivable during render.
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setShow(true);
     document.body.style.overflow = "hidden";

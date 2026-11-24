@@ -22,14 +22,14 @@ export const projects: Project[] = [
   {
     slug: "media-platform",
     name: "Media Platform — OTT Streaming",
-    client: "Cappital (Logicwind)",
+    client: "Logicwind (client product)",
     category: "Video Streaming · SaaS",
     year: "2025–2026",
     featured: true,
     tagline:
       "My most recent streaming platform — a subscription OTT app with a fully custom HLS video player.",
     summary:
-      "The latest OTT product I led — a Netflix-style streaming experience where members watch on-demand and live video, follow creators, join communities, and pay via subscriptions or donations. Built on the very latest stack (Next.js 16, React 19, Apollo 4), I owned the video experience and the custom player from the ground up.",
+      "The latest OTT product I worked on — a Netflix-style streaming experience where members watch on-demand and live video, follow creators, join communities, and pay via subscriptions or donations. Built on the very latest stack (Next.js 16, React 19, Apollo 4), I owned the video experience and the custom player from the ground up.",
     highlights: [
       "Built a fully custom HLS video player — adaptive bitrate streaming, storyboard scrubbing previews, resume-where-you-left-off, and live chat over playback.",
       "Added subscription and paywall plans with Stripe, so members unlock content based on their plan.",
@@ -59,13 +59,13 @@ export const projects: Project[] = [
       { value: "Resume", label: "Cross-device watch-time sync" },
       { value: "Live", label: "Chat + live video" },
     ],
-    role: "Lead Frontend Engineer — video experience & player",
+    role: "Frontend Engineer — custom video player & viewing experience",
     accent: { from: "#6366f1", to: "#a855f7" },
   },
   {
     slug: "he-gets-us",
-    name: "He Gets Us — Campaign Platform",
-    client: "Cappital (Logicwind)",
+    name: "National Campaign Platform",
+    client: "Logicwind (client product)",
     category: "High-Traffic Marketing · Motion",
     year: "2026 · Current",
     featured: true,
@@ -124,7 +124,7 @@ export const projects: Project[] = [
   {
     slug: "eduscan-ai",
     name: "EduScan AI — Education Platform",
-    client: "Cappital (Logicwind)",
+    client: "Logicwind (client product)",
     category: "AI Product · Modern Stack",
     year: "2025",
     featured: true,

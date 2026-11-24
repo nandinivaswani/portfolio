@@ -2,8 +2,8 @@
 
 export const impactMetrics: { value: string; suffix?: string; label: string; sub: string }[] = [
   {
-    value: "4.5",
-    suffix: "+",
+    value: "5",
+    suffix: "",
     label: "Years in production",
     sub: "Frontend engineering since 2021",
   },

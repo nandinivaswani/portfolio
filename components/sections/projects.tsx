@@ -371,18 +371,18 @@ function WorkRow({
 
 // Strongest work first — the top two are marked "Featured" (badge + blurb).
 const DISPLAY_ORDER = [
-  "Western Tech — Parent Portal", // featured
-  "FRC", // featured
-  "ThinQ Media",
-  "Zipcast",
-  "FPIW",
-  "Marketplace Chaplains",
-  "Hope4America",
-  "Visible Things",
-  "DRF",
-  "Barnabas",
-  "OmniDuct",
-  "Seabreeze",
+  "Parent Portal — Replit to Code", // featured
+  "Membership Streaming Platform", // featured
+  "Media Streaming Website",
+  "Video & Podcast CMS",
+  "Media Publishing CMS",
+  "Workplace Services Admin",
+  "Campaign Marketing Site",
+  "Scheduling & Content Admin",
+  "SaaS Admin Dashboard",
+  "Events Management App",
+  "Logistics & Fleet App",
+  "Community Association Site",
 ];
 
 const orderedMore: MoreProject[] = [

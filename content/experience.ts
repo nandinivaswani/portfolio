@@ -12,19 +12,30 @@ export type Role = {
 export const experience: Role[] = [
   {
     company: "Logicwind",
-    title: "Senior Frontend Engineer",
-    period: "2023 — Present",
+    title: "Frontend Engineer (ReactJS / Next.js)",
+    period: "Aug 2021 — Present",
     location: "Surat, India",
     current: true,
     summary:
-      "Lead frontend on the Cappital team's white-label OTT/media platform line — owning the video experience, custom players, and the shared architecture reused across multiple streaming brands.",
+      "Frontend engineer on a white-label OTT and media platform line. Senior-level ownership since 2024: the video experience, custom players, and frontend patterns reused across client streaming products.",
     achievements: [
-      "Built and shipped a fully custom HLS video player (adaptive streaming, storyboard scrubbing, resume, live chat) powering the main streaming product.",
+      "Built a custom HLS video player with thumbnail scrubbing, resume, quality and fullscreen controls and live chat — a YouTube-style experience for the main streaming product.",
+      "Raised the Lighthouse performance score of a production streaming site from 36 to 80 using Google Lighthouse and Chrome DevTools.",
+      "Won Best Team Player of the Year 2025 at the company annual meet.",
       "Brought a modern stack into production — Next.js 16, React 19, Apollo Client 4, next-auth 5 — and set the frontend patterns the team builds on.",
       "Built subscription/paywall flows (Stripe), playback analytics (Matomo) and language support across the platform.",
-      "Reused a single platform engine to launch multiple client streaming brands (DailyWire, Zeale, FRC, ThinQ and more) as separate, branded products.",
+      "Integrated THEOplayer in additional streaming products and reused one platform engine across multiple client brands.",
     ],
-    tags: ["Next.js", "React", "TypeScript", "Apollo GraphQL", "hls.js", "Stripe", "Architecture"],
+    tags: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Apollo GraphQL",
+      "hls.js",
+      "THEOplayer",
+      "Lighthouse",
+      "Stripe",
+    ],
   },
   {
     company: "Logicwind",

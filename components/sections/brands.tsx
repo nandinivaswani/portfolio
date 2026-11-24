@@ -1,14 +1,12 @@
 import { Container } from "@/components/ui/primitives";
 
 const brands = [
-  "DailyWire",
-  "He Gets Us",
-  "Zeale",
+  "OTT Streaming",
+  "Campaign Sites",
+  "Admin CMS",
   "CardZap",
   "EduScan AI",
-  "Big Time Rush",
-  "FRC",
-  "ThinQ Media",
+  "Media Platforms",
 ];
 
 export function Brands() {

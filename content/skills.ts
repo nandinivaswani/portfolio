@@ -1,7 +1,7 @@
 export type SkillGroup = {
   title: string;
   icon: string; // lucide icon name
-  skills: { name: string; level: number }[]; // level 0-100 for animated bars
+  skills: { name: string }[];
 };
 
 export const skillGroups: SkillGroup[] = [
@@ -9,50 +9,50 @@ export const skillGroups: SkillGroup[] = [
     title: "Core Frontend",
     icon: "Code2",
     skills: [
-      { name: "React", level: 96 },
-      { name: "Next.js (App Router)", level: 94 },
-      { name: "TypeScript", level: 90 },
-      { name: "JavaScript (ES6+)", level: 95 },
+      { name: "React" },
+      { name: "Next.js (App Router)" },
+      { name: "TypeScript" },
+      { name: "JavaScript (ES6+)" },
     ],
   },
   {
     title: "Video & Streaming",
     icon: "PlayCircle",
     skills: [
-      { name: "hls.js / HLS streaming", level: 92 },
-      { name: "Custom video players", level: 90 },
-      { name: "Playback analytics", level: 85 },
-      { name: "Live video & chat", level: 82 },
+      { name: "hls.js / HLS streaming" },
+      { name: "Custom video players" },
+      { name: "Playback analytics" },
+      { name: "Live video & chat" },
     ],
   },
   {
     title: "Data & State",
     icon: "Database",
     skills: [
-      { name: "GraphQL / Apollo Client", level: 93 },
-      { name: "GraphQL Codegen", level: 86 },
-      { name: "MobX", level: 84 },
-      { name: "React Query patterns", level: 82 },
+      { name: "GraphQL / Apollo Client" },
+      { name: "GraphQL Codegen" },
+      { name: "MobX" },
+      { name: "React Query patterns" },
     ],
   },
   {
     title: "Platform & Quality",
     icon: "Gauge",
     skills: [
-      { name: "Performance / Core Web Vitals", level: 90 },
-      { name: "i18n / localization", level: 90 },
-      { name: "Accessibility (a11y)", level: 84 },
-      { name: "PWA / offline", level: 82 },
+      { name: "Performance / Core Web Vitals" },
+      { name: "i18n / localization" },
+      { name: "Accessibility (a11y)" },
+      { name: "PWA / offline" },
     ],
   },
   {
     title: "AI / ML",
     icon: "Brain",
     skills: [
-      { name: "Python", level: 78 },
-      { name: "Computer Vision", level: 75 },
-      { name: "ML fundamentals", level: 74 },
-      { name: "AI-assisted products", level: 82 },
+      { name: "Python" },
+      { name: "Computer Vision" },
+      { name: "ML fundamentals" },
+      { name: "AI-assisted products" },
     ],
   },
 ];
@@ -65,7 +65,7 @@ export const techStack: { group: string; items: string[] }[] = [
   },
   {
     group: "Frameworks",
-    items: ["React 19", "Next.js 16", "React Router 7", "Node.js"],
+    items: ["React 19", "Next.js 16", "React Router 7", "Node.js (basic)"],
   },
   {
     group: "Data",

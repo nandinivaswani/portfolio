@@ -58,7 +58,7 @@ export function WhyFE() {
         className="border-border relative flex items-center justify-center overflow-hidden border-b px-6 py-7 md:py-10"
       >
         <motion.h2
-          aria-label="Frontend that performs"
+          aria-label="Good frontend disappears. Bad frontend doesn't."
           style={{
             backgroundImage: "linear-gradient(90deg, var(--accent), var(--accent-2))",
             backgroundRepeat: "no-repeat",
@@ -67,12 +67,14 @@ export function WhyFE() {
             backgroundClip: "text",
             color: "transparent",
             WebkitTextStroke: "1.4px color-mix(in oklab, var(--fg) 20%, transparent)",
-            fontSize: "clamp(34px, 8.4vw, 108px)",
-            lineHeight: 1.05,
+            fontSize: "clamp(28px, 6.2vw, 82px)",
+            lineHeight: 1,
           }}
           className="font-display text-center font-extrabold tracking-tight whitespace-nowrap select-none"
         >
-          FRONTEND THAT PERFORMS
+          GOOD FRONTEND DISAPPEARS.
+          <br />
+          BAD FRONTEND DOESN&apos;T.
         </motion.h2>
       </div>
 

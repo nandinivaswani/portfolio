@@ -28,7 +28,7 @@ export function Contact() {
       <div className="mx-auto max-w-7xl px-6">
         {/* Header */}
         <div className="border-border border-b py-20 md:py-24">
-          <p className="text-accent font-mono text-xs tracking-[0.2em] uppercase">05 // Contact</p>
+          <p className="text-accent font-mono text-xs tracking-[0.2em] uppercase">06 // Contact</p>
         </div>
 
         {/* Giant CTA block */}

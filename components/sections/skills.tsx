@@ -139,7 +139,7 @@ export function Skills() {
               </h2>
             </RevealHeading>
             <p className="text-fg-muted mt-4 max-w-sm text-sm">
-              4.5+ years across streaming, SaaS, AI and CMS. Different domains, same rule: reach for
+              5 years across streaming, SaaS, AI and CMS. Different domains, same rule: reach for
               the tool that makes the product faster or simpler — not the trendiest one.
             </p>
           </div>
