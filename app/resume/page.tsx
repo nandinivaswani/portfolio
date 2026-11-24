@@ -5,7 +5,16 @@ import { site } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "Resume",
-  description: `${site.name} — ${site.role}. ${site.shortBio}`,
+  description: `${site.name} — ${site.role}. ${site.seoDescription}`,
+  alternates: { canonical: "/resume" },
+  openGraph: {
+    url: "/resume",
+    title: `Resume · ${site.name}`,
+    type: "profile",
+    images: [
+      { url: "/opengraph-image", width: 1200, height: 630, alt: `${site.name} — ${site.role}` },
+    ],
+  },
 };
 
 export default function ResumePage() {

@@ -8,6 +8,10 @@ export const site = {
     "I build video players, GraphQL data layers and multi-language apps in React and Next.js, and I use AI tools like Claude Code to move faster without giving up code quality.",
   shortBio:
     "Senior Frontend Engineer with 5 years building complex React & Next.js applications. I've shipped custom HLS video players and OTT platforms, plus global multi-language SaaS, AI-assisted products, content systems, and reusable component libraries — always focused on performance, accessibility, and clean structure. I started my career with hands-on AI/ML work, which still shapes how I build AI-assisted products today.",
+  // ≤160 chars: used for meta description, link previews and the OG image.
+  seoDescription:
+    "Senior Frontend Engineer with 5 years in JavaScript, React and Next.js. Custom video players, GraphQL apps, and AI-assisted development.",
+  ogLine: "Custom video players, GraphQL apps and AI-assisted development.",
   location: "Surat, Gujarat, India",
   locationShort: "Surat, India · Remote-friendly",
   email: "nandinivaswani83@gmail.com",

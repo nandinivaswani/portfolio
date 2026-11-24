@@ -39,31 +39,66 @@ export default function Home() {
 
 /** JSON-LD structured data for SEO / rich results. */
 function PersonSchema() {
-  const schema = {
-    "@context": "https://schema.org",
+  const personId = `${site.domain}/#person`;
+  const person = {
     "@type": "Person",
+    "@id": personId,
     name: site.name,
     jobTitle: site.role,
-    description: site.shortBio,
+    description: site.seoDescription,
     email: site.email,
-    address: { "@type": "PostalAddress", addressLocality: "Surat", addressCountry: "IN" },
     url: site.domain,
+    image: `${site.domain}/opengraph-image`,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Surat",
+      addressRegion: "Gujarat",
+      addressCountry: "IN",
+    },
     sameAs: [site.socials.linkedin, site.socials.github],
     knowsAbout: [
+      "JavaScript",
       "React",
       "Next.js",
       "TypeScript",
+      "GraphQL",
+      "Apollo Client",
       "Video Streaming",
       "HLS",
-      "GraphQL",
+      "Web Performance",
       "Frontend Architecture",
+      "AI-Assisted Development",
     ],
     worksFor: { "@type": "Organization", name: "Logicwind" },
+    alumniOf: { "@type": "CollegeOrUniversity", name: "CGPIT, Uka Tarsadia University" },
     hasOccupation: {
       "@type": "Occupation",
       name: site.role,
       skills: projects.flatMap((p) => p.stack).join(", "),
     },
+  };
+  const schema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      person,
+      {
+        "@type": "WebSite",
+        "@id": `${site.domain}/#website`,
+        url: site.domain,
+        name: `${site.name} — Portfolio`,
+        description: site.seoDescription,
+        inLanguage: "en",
+        publisher: { "@id": personId },
+      },
+      {
+        "@type": "ProfilePage",
+        "@id": `${site.domain}/#profile`,
+        url: site.domain,
+        name: `${site.name} — ${site.role}`,
+        isPartOf: { "@id": `${site.domain}/#website` },
+        mainEntity: { "@id": personId },
+      },
+    ],
   };
   return (
     <script

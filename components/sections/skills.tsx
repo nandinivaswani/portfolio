@@ -2,7 +2,7 @@
 
 import { motion, useInView, useReducedMotion } from "motion/react";
 import { useRef, useState, useEffect } from "react";
-import { skillGroups, languages, softSkills } from "@/content/skills";
+import { skillGroups, languages, softSkills, softSkillsProof } from "@/content/skills";
 import { site } from "@/content/site";
 import { Icon } from "@/components/ui/icon";
 import { GridField, SectionGlow } from "@/components/section-fx";
@@ -246,6 +246,7 @@ export function Skills() {
                 </motion.span>
               ))}
             </div>
+            <p className="text-fg-muted mt-6 max-w-md text-sm leading-relaxed">{softSkillsProof}</p>
           </div>
         </div>
       </div>

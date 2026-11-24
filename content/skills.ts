@@ -138,12 +138,17 @@ export const languages: { name: string; level: "Native" | "Fluent" | "Profession
 
 // Soft skills (from the résumé).
 export const softSkills: string[] = [
-  "Team work",
-  "Leadership",
-  "Time management",
-  "Problem solving",
-  "Communication",
-  "Quick learner",
+  "Team management",
   "Ownership",
+  "Leadership",
   "Mentoring",
+  "Collaboration",
+  "Communication",
+  "Problem solving",
+  "Time management",
+  "Quick learner",
 ];
+
+// Real evidence shown under the soft skills tags.
+export const softSkillsProof =
+  "Best Team Player of the Year 2025 at Logicwind. Senior-level ownership of video and frontend work since 2024.";

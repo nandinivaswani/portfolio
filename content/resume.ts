@@ -96,6 +96,20 @@ export const resume = {
     },
     { group: "Version Control and Deployment", items: ["Git", "GitHub", "Vercel"] },
     {
+      group: "Soft Skills",
+      items: [
+        "Team management",
+        "Ownership",
+        "Leadership",
+        "Mentoring",
+        "Collaboration",
+        "Communication",
+        "Problem solving",
+        "Time management",
+        "Quick learner",
+      ],
+    },
+    {
       group: "AI Tools and AI-Assisted Development",
       items: [
         "Claude and Claude Code",
