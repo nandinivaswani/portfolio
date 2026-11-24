@@ -34,7 +34,7 @@ export function ResumeDocument() {
       </Section>
 
       {/* Skills */}
-      <Section title="Technical Skills">
+      <Section title="Skills">
         <div className="grid gap-1.5">
           {resume.skills.map((s) => (
             <div key={s.group} className="grid grid-cols-[140px_1fr] gap-2">
@@ -93,6 +93,11 @@ export function ResumeDocument() {
           <p className="text-[11.5px] text-zinc-500">
             {resume.education.period} · {resume.education.detail}
           </p>
+        </Section>
+
+        {/* Languages */}
+        <Section title="Languages">
+          <p className="text-zinc-700">{resume.languages.join(", ")}</p>
         </Section>
 
         {/* Achievements */}

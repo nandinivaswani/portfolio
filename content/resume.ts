@@ -193,6 +193,7 @@ export const resume = {
     period: "2017 — 2021",
     detail: "GPA 8.88",
   },
+  languages: ["Gujarati (native)", "Sindhi (native)", "Hindi (fluent)", "English (professional)"],
   achievements: [
     "Best Team Player of the Year 2025, Logicwind",
     "Rising Star of the Month, Logicwind",

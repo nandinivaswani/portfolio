@@ -1,28 +1,31 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, JetBrains_Mono, Sora } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SmoothScroll } from "@/components/smooth-scroll";
 import { SiteBackdrop } from "@/components/site-backdrop";
 import { site } from "@/content/site";
 
-const inter = Inter({
+// Self-hosted (latin, variable) so the build never depends on fetching Google Fonts.
+const inter = localFont({
+  src: "./fonts/Inter-latin.woff2",
   variable: "--font-sans",
-  subsets: ["latin"],
   display: "swap",
+  weight: "100 900",
 });
 
-const sora = Sora({
+const sora = localFont({
+  src: "./fonts/Sora-latin.woff2",
   variable: "--font-display",
-  subsets: ["latin"],
   display: "swap",
-  weight: ["500", "600", "700", "800"],
+  weight: "100 800",
 });
 
-const jetbrains = JetBrains_Mono({
+const jetbrains = localFont({
+  src: "./fonts/JetBrainsMono-latin.woff2",
   variable: "--font-mono",
-  subsets: ["latin"],
   display: "swap",
+  weight: "100 800",
 });
 
 export const metadata: Metadata = {
