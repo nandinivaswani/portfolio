@@ -11,7 +11,7 @@ export const resume = {
     { label: "GitHub", href: "github.com/nandinivaswani" },
   ],
   summary:
-    "Senior Frontend Engineer with 5 years of experience building production React and Next.js applications, specializing in video streaming platforms, GraphQL data layers and multi-language products. Built a custom YouTube-style HLS video player, worked with THEOplayer, and raised a streaming site's Lighthouse performance score from 36 to 80. Experienced across 15+ client products, from Next.js 16 and React 19 streaming apps to admin CMS dashboards. Uses Claude Code, Replit, v0 and Lovable to prototype and ship faster, while owning architecture, debugging and production quality.",
+    "Senior Frontend Engineer with 5 years of experience building production React and Next.js applications, specializing in video streaming platforms, GraphQL data layers and multi-language products. Built a custom YouTube-style HLS video player, worked with THEOplayer, and raised a streaming site's Lighthouse performance score from 36 to 80. Experienced across 10+ client products, from Next.js 16 and React 19 streaming apps to admin CMS dashboards. Uses Claude Code, Replit, v0 and Lovable to prototype and ship faster, while owning architecture, debugging and production quality.",
   skills: [
     {
       group: "Programming Languages",
@@ -138,7 +138,7 @@ export const resume = {
         "Built subscription and paywall flows with Stripe and playback analytics with Matomo.",
         "Implemented Firebase authentication with one login across two sessions (cookie-based) and role-based access across multiple web apps.",
         "Localized a digital business card SaaS into 30 languages and shipped it as an offline-capable PWA.",
-        "Delivered 15+ client products across streaming, media CMS, SaaS and campaign sites, using Next.js, MobX and Ant Design.",
+        "Delivered 10+ client products across streaming, media CMS, SaaS and campaign sites, using Next.js, MobX and Ant Design.",
         "Used Claude Code and Replit to build prototypes, such as a client parent portal that began in Replit and was then rebuilt in code by hand.",
         "Named Best Team Player of the Year 2025 at the company annual meet.",
       ],
@@ -193,7 +193,7 @@ export const resume = {
     period: "2017 — 2021",
     detail: "GPA 8.88",
   },
-  languages: ["Gujarati (native)", "Sindhi (native)", "Hindi (fluent)", "English (professional)"],
+  languages: ["Gujarati", "Sindhi", "Hindi", "English"],
   achievements: [
     "Best Team Player of the Year 2025, Logicwind",
     "Rising Star of the Month, Logicwind",

@@ -29,7 +29,7 @@ export const site = {
   // Quick credibility metrics shown in the hero trust bar
   heroStats: [
     { value: "5", label: "Years building for production" },
-    { value: "15+", label: "Platforms shipped, start to finish" },
+    { value: "10+", label: "Platforms shipped, start to finish" },
     { value: "5+", label: "Domains: video, SaaS, AI & more" },
     { value: "~30", label: "Languages localized" },
   ],

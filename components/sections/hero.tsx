@@ -314,7 +314,7 @@ function bentoCards() {
         <div className="flex h-full flex-col justify-between">
           <span className="text-fg-muted font-mono text-xs tracking-widest uppercase">Shipped</span>
           <div className="flex items-end gap-2">
-            <p className="text-fg text-5xl font-black">15+</p>
+            <p className="text-fg text-5xl font-black">10+</p>
             <p className="text-fg-muted mb-1.5 text-sm">platforms end-to-end</p>
           </div>
         </div>

@@ -8,7 +8,7 @@ export const impactMetrics: { value: string; suffix?: string; label: string; sub
     sub: "Frontend engineering since 2021",
   },
   {
-    value: "15",
+    value: "10",
     suffix: "+",
     label: "Platforms shipped",
     sub: "Across streaming, SaaS & marketing",
